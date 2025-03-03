@@ -136,12 +136,7 @@ export default function Navbar() {
           </nav>
         </div>
         
-        {/* Badge - Visible uniquement lorsque le menu mobile est fermé */}
-        {menuFullyClosed && (
-          <div className="w-full bg-primary/10 text-primary px-3 py-1.5 rounded-lg text-sm font-medium text-center my-2">
-            Plus d'une centaine de personnes aidées depuis 2019 !
-          </div>
-        )}
+        {/* Badge supprimé */}
       </div>
       
       {/* Menu mobile - Correction du problème de transparence */}
@@ -191,11 +186,7 @@ export default function Navbar() {
             </ul>
           </nav>
           
-          <div className="p-4 border-t">
-            <div className="bg-primary/10 text-primary px-3 py-2 rounded-lg text-sm font-medium text-center">
-              Plus d'une centaine de personnes aidées depuis 2019 !
-            </div>
-          </div>
+          {/* Badge mobile supprimé */}
         </div>
       )}
     </header>
