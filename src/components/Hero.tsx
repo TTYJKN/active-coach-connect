@@ -12,7 +12,7 @@ export default function Hero() {
           alt="Coach sportif en action" 
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/60 to-white/90"></div>
+        {/* Removing the white overlay div */}
       </div>
       
       <div className="container mx-auto px-4 z-10 py-4 md:py-8">
