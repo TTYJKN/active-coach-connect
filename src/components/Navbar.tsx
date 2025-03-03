@@ -62,9 +62,13 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <div className="font-heading text-lg md:text-xl font-bold">
-            Pierre Lefebvre
-          </div>
+          <a href="#hero" className="block">
+            <img 
+              src="/lovable-uploads/a9a89586-21f7-4d9e-9b7a-379b99a7baee.png" 
+              alt="PL Training" 
+              className="h-12 md:h-14 w-auto" 
+            />
+          </a>
           
           {/* Mobile menu button */}
           <button 
