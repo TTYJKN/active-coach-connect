@@ -10,7 +10,7 @@ export default function Hero() {
         <img 
           src="/lovable-uploads/592d2aca-c44c-4352-bfbf-d209c5f2e0f7.png"
           alt="Coach sportif en action" 
-          className="w-full h-full object-cover md:object-[center_25%]" // Adjusted to slightly raise the image position on desktop
+          className="w-full h-full object-cover md:object-[center_20%]" // Adjusted to raise the image position further on desktop
         />
         {/* Removing the white overlay div */}
       </div>
