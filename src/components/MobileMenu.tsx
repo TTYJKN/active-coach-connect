@@ -22,64 +22,67 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
   onNavigate 
 }) => {
   const [mounted, setMounted] = useState(false);
-  const [visible, setVisible] = useState(false);
+  const [animating, setAnimating] = useState(false);
 
-  // Gestionnaire de l'état d'affichage du menu
+  // Handle mounting and unmounting of the menu
   useEffect(() => {
     if (isOpen) {
-      // Bloquer le scroll du body
+      // Block body scroll
       document.body.style.overflow = 'hidden';
       
-      // Monter le composant
+      // Mount component
       setMounted(true);
       
-      // Afficher le menu après un court délai (pour l'animation)
-      setTimeout(() => setVisible(true), 10);
-    } else {
-      // Cacher le menu
-      setVisible(false);
+      // Set a small timeout to allow the DOM to update before animation
+      const animTimer = setTimeout(() => {
+        setAnimating(true);
+      }, 10);
       
-      // Démonter le composant après la fin de l'animation
-      const timer = setTimeout(() => {
-        if (!isOpen) {
-          setMounted(false);
-          // Restaurer le scroll du body
-          document.body.style.overflow = '';
-        }
+      return () => clearTimeout(animTimer);
+    } else if (mounted) {
+      // Start unmounting animation
+      setAnimating(false);
+      
+      // Wait for animation to complete before unmounting
+      const unmountTimer = setTimeout(() => {
+        setMounted(false);
+        // Restore body scroll
+        document.body.style.overflow = '';
       }, 300);
       
-      return () => {
-        clearTimeout(timer);
-      };
+      return () => clearTimeout(unmountTimer);
     }
-
-    // Nettoyage
+    
+    // Cleanup function
     return () => {
       document.body.style.overflow = '';
     };
   }, [isOpen]);
 
-  // Fonction pour la navigation dans le menu mobile
+  // Handle menu item clicks safely
   const handleMenuItemClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     
-    // Fermer le menu
-    onClose();
-    
-    // Naviguer immédiatement, mais permettre à l'animation de se terminer
+    // First navigate to ensure the target section is ready
     onNavigate(href);
+    
+    // Then close the menu with a slight delay to prevent freezing
+    requestAnimationFrame(() => {
+      onClose();
+    });
   };
 
+  // Don't render anything if not mounted
   if (!mounted) return null;
 
   return (
     <div 
       className={cn(
-        "fixed inset-0 z-50 flex flex-col transition-opacity duration-300",
-        "bg-white",
-        visible ? "opacity-100" : "opacity-0"
+        "fixed inset-0 z-50 flex flex-col bg-white",
+        "transition-opacity duration-300",
+        animating ? "opacity-100" : "opacity-0"
       )}
-      aria-hidden={!visible}
+      aria-hidden={!animating}
     >
       <div className="p-4 flex items-center justify-between border-b">
         <a 
@@ -94,7 +97,12 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
           />
         </a>
         <button 
-          onClick={onClose}
+          onClick={() => {
+            // Use requestAnimationFrame for smoother closing
+            requestAnimationFrame(() => {
+              onClose();
+            });
+          }}
           className="p-2 rounded-full hover:bg-gray-100 transition-colors"
           aria-label="Fermer le menu"
         >

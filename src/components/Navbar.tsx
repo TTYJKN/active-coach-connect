@@ -24,7 +24,7 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Surveiller le défilement pour changer l'apparence de la navbar
+  // Watch for scrolling to change navbar appearance
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -36,36 +36,41 @@ export default function Navbar() {
     };
   }, []);
 
-  // Fonction pour la navigation sur desktop et mobile
-  const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    scrollToSection(href);
-  };
-
-  // Fonction commune pour le défilement vers une section
+  // Safe scrolling function with error handling
   const scrollToSection = (href: string) => {
     try {
       const element = document.querySelector(href);
-      if (element) {
-        // Utiliser requestAnimationFrame pour s'assurer que le défilement fonctionne correctement
-        requestAnimationFrame(() => {
-          const offsetTop = element.getBoundingClientRect().top + window.scrollY;
-          window.scrollTo({
-            top: offsetTop,
-            behavior: 'smooth'
-          });
-        });
+      if (!element) {
+        console.warn(`Element with selector "${href}" not found`);
+        return;
       }
+      
+      // Calculate position accounting for any fixed headers
+      const navbarHeight = 80; // approximate navbar height
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - navbarHeight;
+      
+      // Use a more reliable scrolling approach
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     } catch (error) {
-      console.error("Erreur lors du défilement:", error);
+      console.error("Error scrolling to section:", error);
     }
+  };
+
+  // Handle navigation link clicks
+  const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    scrollToSection(href);
   };
 
   return (
     <header 
       className={cn(
         "fixed top-0 left-0 right-0 z-40 transition-all duration-300",
-        scrolled ? "bg-white/80 backdrop-blur-md shadow-sm" : "bg-transparent"
+        scrolled ? "bg-white shadow-sm" : "bg-transparent"
       )}
     >
       <div className="container mx-auto px-4">
@@ -84,7 +89,7 @@ export default function Navbar() {
             </a>
           </div>
           
-          {/* Bouton du menu mobile */}
+          {/* Mobile menu button */}
           <button 
             className="md:hidden focus:outline-none"
             onClick={() => setIsMenuOpen(true)}
@@ -93,7 +98,7 @@ export default function Navbar() {
             <Menu className="h-6 w-6" />
           </button>
           
-          {/* Menu desktop */}
+          {/* Desktop menu */}
           <nav className="hidden md:flex space-x-6">
             {navLinks.map((link) => (
               <a
@@ -109,7 +114,7 @@ export default function Navbar() {
         </div>
       </div>
       
-      {/* Menu mobile - Utilise un composant séparé */}
+      {/* Mobile menu component */}
       <MobileMenu 
         isOpen={isMenuOpen} 
         onClose={() => setIsMenuOpen(false)} 
