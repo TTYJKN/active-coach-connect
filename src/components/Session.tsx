@@ -4,7 +4,7 @@ import { Clock, Flame, ArrowRight, MessageCircle, Dumbbell } from 'lucide-react'
 
 export default function Session() {
   return (
-    <section id="session" className="section-container bg-secondary/30">
+    <section id="session" className="section-container bg-secondary/30 reveal">
       <h2 className="section-title">Comment se déroule une séance ?</h2>
       
       <div className="max-w-3xl mx-auto">

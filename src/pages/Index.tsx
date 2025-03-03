@@ -33,8 +33,25 @@ const Index = () => {
     // Initial check
     reveal();
     
+    // Hide loader after page is loaded
+    const hideLoader = () => {
+      const loader = document.getElementById('loader');
+      if (loader) {
+        loader.style.opacity = '0';
+        loader.style.transition = 'opacity 0.5s ease';
+        setTimeout(() => {
+          loader.style.display = 'none';
+        }, 500);
+      }
+    };
+    
+    // Execute hide loader immediately and also on window load
+    hideLoader();
+    window.addEventListener('load', hideLoader);
+    
     return () => {
       window.removeEventListener('scroll', reveal);
+      window.removeEventListener('load', hideLoader);
     };
   }, []);
 
@@ -58,24 +75,6 @@ const Index = () => {
       <About />
       <Contact />
       <Footer />
-      
-      {/* Script to hide loader after page is loaded */}
-      <script dangerouslySetInnerHTML={{
-        __html: `
-          window.addEventListener('load', function() {
-            const loader = document.getElementById('loader');
-            if (loader) {
-              setTimeout(() => {
-                loader.style.opacity = '0';
-                loader.style.transition = 'opacity 0.5s ease';
-                setTimeout(() => {
-                  loader.style.display = 'none';
-                }, 500);
-              }, 800);
-            }
-          });
-        `
-      }} />
     </div>
   );
 }
