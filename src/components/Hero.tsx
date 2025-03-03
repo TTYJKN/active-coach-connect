@@ -17,13 +17,6 @@ export default function Hero() {
       
       <div className="container mx-auto px-4 z-10 py-16">
         <div className="max-w-3xl mx-auto text-center">
-          {/* Animated badge */}
-          <div className="inline-block mb-6 animate-fade-in">
-            <span className="bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-medium">
-              Plus d'une centaine de personnes aidées depuis 2019 !
-            </span>
-          </div>
-          
           {/* Main heading */}
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight animate-fade-up">
             Pierre Lefebvre

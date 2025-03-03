@@ -62,13 +62,18 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <a href="#hero" className="block">
-            <img 
-              src="/lovable-uploads/a9a89586-21f7-4d9e-9b7a-379b99a7baee.png" 
-              alt="PL Training" 
-              className="h-12 md:h-14 w-auto" 
-            />
-          </a>
+          <div className="flex items-center space-x-4">
+            <a href="#hero" className="block">
+              <img 
+                src="/lovable-uploads/a9a89586-21f7-4d9e-9b7a-379b99a7baee.png" 
+                alt="PL Training" 
+                className="h-12 md:h-14 w-auto" 
+              />
+            </a>
+            <span className="hidden md:inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium">
+              Plus d'une centaine de personnes aidées depuis 2019 !
+            </span>
+          </div>
           
           {/* Mobile menu button */}
           <button 
@@ -107,6 +112,10 @@ export default function Navbar() {
         )}
       >
         <nav className="flex flex-col space-y-4 mt-8">
+          {/* Add the badge at the top of mobile menu */}
+          <div className="bg-primary/10 text-primary px-3 py-1.5 rounded-full text-sm font-medium text-center mb-4">
+            Plus d'une centaine de personnes aidées depuis 2019 !
+          </div>
           {navLinks.map((link) => (
             <a
               key={link.name}
