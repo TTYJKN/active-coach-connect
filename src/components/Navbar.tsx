@@ -23,6 +23,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
+  // Surveiller le défilement pour changer l'apparence de la navbar
   useEffect(() => {
     const handleScroll = () => {
       const offset = window.scrollY;
@@ -39,7 +40,7 @@ export default function Navbar() {
     };
   }, []);
 
-  // Manage body scroll when mobile menu is open
+  // Gérer le défilement du body lorsque le menu mobile est ouvert
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -52,13 +53,14 @@ export default function Navbar() {
     };
   }, [isOpen]);
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  // Fonction pour la navigation
+  const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     
-    // First close the menu
+    // Fermer le menu d'abord
     setIsOpen(false);
     
-    // Wait for menu animation to complete before scrolling
+    // Attendre que l'animation du menu se termine
     setTimeout(() => {
       const element = document.querySelector(href);
       if (element) {
@@ -90,22 +92,22 @@ export default function Navbar() {
             </a>
           </div>
           
-          {/* Mobile menu button */}
+          {/* Bouton du menu mobile */}
           <button 
             className="md:hidden focus:outline-none"
             onClick={() => setIsOpen(true)}
-            aria-label="Open menu"
+            aria-label="Ouvrir le menu"
           >
             <Menu className="h-6 w-6" />
           </button>
           
-          {/* Desktop menu */}
+          {/* Menu desktop */}
           <nav className="hidden md:flex space-x-6">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                onClick={(e) => handleClick(e, link.href)}
+                onClick={(e) => handleNavigation(e, link.href)}
                 className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
               >
                 {link.name}
@@ -120,45 +122,44 @@ export default function Navbar() {
         </div>
       </div>
       
-      {/* NEW MOBILE MENU - Completely redesigned as a full-screen fixed overlay with X button */}
+      {/* Menu mobile - Conception complètement nouvelle */}
       {isOpen && (
-        <div className="fixed inset-0 bg-white z-50 md:hidden flex flex-col">
-          {/* Close button header */}
-          <div className="flex items-center justify-between p-4 border-b">
-            <div className="flex items-center">
+        <div className="fixed inset-0 bg-white/95 z-50 flex flex-col md:hidden">
+          <div className="p-4 flex items-center justify-between border-b">
+            <a href="#hero" onClick={(e) => handleNavigation(e, "#hero")}>
               <img 
                 src="/lovable-uploads/a9a89586-21f7-4d9e-9b7a-379b99a7baee.png" 
                 alt="PL Training" 
-                className="h-12 w-auto" 
+                className="h-10 w-auto" 
               />
-            </div>
+            </a>
             <button 
               onClick={() => setIsOpen(false)}
-              className="p-2 rounded-full hover:bg-gray-100"
-              aria-label="Close menu"
+              className="p-1 rounded-full hover:bg-gray-100"
+              aria-label="Fermer le menu"
             >
               <X className="h-6 w-6" />
             </button>
           </div>
           
-          {/* Navigation links */}
-          <nav className="flex-1 overflow-y-auto py-6 px-4">
-            <ul className="space-y-4">
-              {navLinks.map((link) => (
-                <li key={link.name}>
-                  <a
-                    href={link.href}
-                    onClick={(e) => handleClick(e, link.href)}
-                    className="block py-3 px-4 text-lg font-medium text-foreground hover:bg-primary/10 hover:text-primary rounded-lg transition-colors"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <div className="flex-1 overflow-auto p-4">
+            <nav className="mt-4">
+              <ul className="space-y-3">
+                {navLinks.map((link) => (
+                  <li key={link.name}>
+                    <a
+                      href={link.href}
+                      onClick={(e) => handleNavigation(e, link.href)}
+                      className="block py-3 px-4 text-lg font-medium rounded-lg hover:bg-primary/10 hover:text-primary transition-colors"
+                    >
+                      {link.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
           
-          {/* Footer with badge */}
           <div className="p-4 border-t">
             <div className="bg-primary/10 text-primary px-3 py-2 rounded-lg text-sm font-medium text-center">
               Plus d'une centaine de personnes aidées depuis 2019 !
