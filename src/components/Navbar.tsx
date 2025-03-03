@@ -136,14 +136,18 @@ export default function Navbar() {
         </div>
       </div>
       
-      {/* Mobile menu - Amélioration avec une meilleure gestion z-index et animations */}
+      {/* Mobile menu - Correction du problème de transparence */}
       <div 
         className={cn(
-          "fixed inset-0 bg-white z-40 transition-all duration-300 ease-in-out md:hidden",
+          "fixed inset-0 bg-white z-40 md:hidden",
           isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         )}
+        style={{ 
+          transition: "opacity 300ms ease-in-out",
+          paddingTop: "5rem"
+        }}
       >
-        <nav className="flex flex-col space-y-4 mt-24 px-6">
+        <nav className="flex flex-col space-y-4 px-6">
           {navLinks.map((link) => (
             <a
               key={link.name}
