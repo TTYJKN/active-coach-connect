@@ -39,16 +39,30 @@ export default function Navbar() {
     };
   }, []);
 
-  // Prevent scrolling when mobile menu is open
+  // Amélioration de la gestion du scroll pour le menu mobile
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
+      // Sauvegarde de la position de défilement actuelle
+      const scrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+      document.body.style.top = `-${scrollY}px`;
     } else {
-      document.body.style.overflow = 'auto';
+      // Restauration de la position de défilement
+      const scrollY = document.body.style.top;
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.top = '';
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+      }
     }
     
     return () => {
-      document.body.style.overflow = 'auto';
+      // Nettoyage en cas de démontage du composant
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.top = '';
     };
   }, [isOpen]);
 
@@ -56,14 +70,17 @@ export default function Navbar() {
     e.preventDefault();
     setIsOpen(false);
     
-    const element = document.querySelector(href);
-    if (element) {
-      const offsetTop = element.getBoundingClientRect().top + window.pageYOffset;
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth'
-      });
-    }
+    // Petit délai pour permettre la fermeture du menu avant le défilement
+    setTimeout(() => {
+      const element = document.querySelector(href);
+      if (element) {
+        const offsetTop = element.getBoundingClientRect().top + window.pageYOffset;
+        window.scrollTo({
+          top: offsetTop,
+          behavior: 'smooth'
+        });
+      }
+    }, 100);
   };
 
   return (
@@ -119,14 +136,14 @@ export default function Navbar() {
         </div>
       </div>
       
-      {/* Mobile menu */}
+      {/* Mobile menu - Amélioration avec une meilleure gestion z-index et animations */}
       <div 
         className={cn(
-          "fixed inset-0 bg-white z-40 pt-16 px-4 transition-transform duration-300 ease-in-out md:hidden overflow-auto",
-          isOpen ? "translate-x-0" : "translate-x-full"
+          "fixed inset-0 bg-white z-40 transition-all duration-300 ease-in-out md:hidden",
+          isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         )}
       >
-        <nav className="flex flex-col space-y-4 mt-8">
+        <nav className="flex flex-col space-y-4 mt-24 px-6">
           {navLinks.map((link) => (
             <a
               key={link.name}
