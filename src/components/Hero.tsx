@@ -4,7 +4,7 @@ import { Mail, MessageSquare } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section id="hero" className="relative min-h-screen flex items-center pt-10 md:pt-14">
+    <section id="hero" className="relative min-h-screen flex items-center pt-6 md:pt-14">
       {/* Background image with overlay */}
       <div className="absolute inset-0 z-0">
         <img 
@@ -15,7 +15,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-white/60 to-white/90"></div>
       </div>
       
-      <div className="container mx-auto px-4 z-10 py-6 md:py-8">
+      <div className="container mx-auto px-4 z-10 py-4 md:py-8">
         <div className="max-w-3xl mx-auto text-center">
           {/* Main heading */}
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight animate-fade-up">

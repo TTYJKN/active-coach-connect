@@ -46,7 +46,7 @@ export default function Navbar() {
       }
       
       // Calculate position accounting for any fixed headers
-      const navbarHeight = 70; // slightly reduced from 80 to account for new spacing
+      const navbarHeight = 64; // Reduced for smaller spacing
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - navbarHeight;
       
