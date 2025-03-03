@@ -17,16 +17,16 @@ export default function Hero() {
       
       <div className="container mx-auto px-4 z-10 py-4 md:py-8">
         <div className="max-w-3xl mx-auto text-center">
-          {/* Main heading - Now with white text */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight animate-fade-up text-white">
+          {/* Main heading - Now with black text */}
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight animate-fade-up text-black">
             Pierre Lefebvre
-            <span className="block text-2xl md:text-3xl lg:text-4xl mt-2 text-white">
+            <span className="block text-2xl md:text-3xl lg:text-4xl mt-2 text-black">
               Coach Sportif & Préparateur Physique
             </span>
           </h1>
           
-          {/* Slogan - Now with white text */}
-          <h2 className="text-xl md:text-2xl font-medium mb-8 text-white animate-fade-up" style={{ animationDelay: '0.2s' }}>
+          {/* Slogan - Now with black text */}
+          <h2 className="text-xl md:text-2xl font-medium mb-8 text-black animate-fade-up" style={{ animationDelay: '0.2s' }}>
             Dur à l'entraînement, facile dans la vie !
           </h2>
           
