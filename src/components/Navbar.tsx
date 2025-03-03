@@ -23,6 +23,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [menuVisible, setMenuVisible] = useState(false);
+  const [menuFullyClosed, setMenuFullyClosed] = useState(true);
 
   // Surveiller le défilement pour changer l'apparence de la navbar
   useEffect(() => {
@@ -45,6 +46,7 @@ export default function Navbar() {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
+      setMenuFullyClosed(false);
       // Après animation d'ouverture
       setTimeout(() => {
         setMenuVisible(true);
@@ -52,6 +54,10 @@ export default function Navbar() {
     } else {
       document.body.style.overflow = '';
       setMenuVisible(false);
+      // S'assurer que le menu est complètement fermé après la transition
+      setTimeout(() => {
+        setMenuFullyClosed(true);
+      }, 300);
     }
     
     return () => {
@@ -78,7 +84,7 @@ export default function Navbar() {
           behavior: 'smooth'
         });
       }
-    }, 300); // Délai plus long pour s'assurer que les transitions CSS sont terminées
+    }, 350); // Délai plus long pour s'assurer que les transitions CSS sont terminées
   };
 
   // Fonction qui ferme complètement le menu
@@ -130,20 +136,23 @@ export default function Navbar() {
           </nav>
         </div>
         
-        {/* Badge */}
-        <div className="w-full bg-primary/10 text-primary px-3 py-1.5 rounded-lg text-sm font-medium text-center my-2">
-          Plus d'une centaine de personnes aidées depuis 2019 !
-        </div>
+        {/* Badge - Visible uniquement lorsque le menu mobile est fermé */}
+        {menuFullyClosed && (
+          <div className="w-full bg-primary/10 text-primary px-3 py-1.5 rounded-lg text-sm font-medium text-center my-2">
+            Plus d'une centaine de personnes aidées depuis 2019 !
+          </div>
+        )}
       </div>
       
       {/* Menu mobile - Correction du problème de transparence */}
-      {isOpen && (
+      {!menuFullyClosed && (
         <div 
           className={cn(
-            "fixed inset-0 bg-white z-50 flex flex-col overflow-auto md:hidden transition-opacity duration-300",
-            menuVisible ? "opacity-100" : "opacity-0"
+            "fixed inset-0 bg-white z-50 flex flex-col overflow-auto md:hidden",
+            menuVisible ? "opacity-100" : "opacity-0",
+            "transition-opacity duration-300"
           )}
-          style={{ display: isOpen ? 'flex' : 'none' }}
+          style={{ pointerEvents: isOpen ? 'auto' : 'none' }}
         >
           <div className="p-4 flex items-center justify-between border-b">
             <a 
