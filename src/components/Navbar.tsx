@@ -57,11 +57,11 @@ export default function Navbar() {
   const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     
-    // Fermer le menu mobile si ouvert
+    // Fermer le menu mobile avant de naviguer
     setIsOpen(false);
     
-    // Attendre que l'animation du menu se termine
-    setTimeout(() => {
+    // Utiliser requestAnimationFrame pour s'assurer que le menu est fermé avant de défiler
+    requestAnimationFrame(() => {
       const element = document.querySelector(href);
       if (element) {
         const offsetTop = element.getBoundingClientRect().top + window.scrollY;
@@ -70,7 +70,7 @@ export default function Navbar() {
           behavior: 'smooth'
         });
       }
-    }, 300);
+    });
   };
 
   return (
@@ -122,7 +122,7 @@ export default function Navbar() {
         </div>
       </div>
       
-      {/* Menu mobile - Nouvelle conception simple et robuste */}
+      {/* Menu mobile - Conception améliorée pour éviter les problèmes de transparence */}
       {isOpen && (
         <div className="fixed inset-0 bg-white z-50 flex flex-col overflow-auto md:hidden">
           <div className="p-4 flex items-center justify-between border-b">
