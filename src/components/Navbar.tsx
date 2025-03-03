@@ -57,14 +57,14 @@ export default function Navbar() {
   const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     
-    // Fermer le menu d'abord
+    // Fermer le menu mobile si ouvert
     setIsOpen(false);
     
     // Attendre que l'animation du menu se termine
     setTimeout(() => {
       const element = document.querySelector(href);
       if (element) {
-        const offsetTop = element.getBoundingClientRect().top + window.pageYOffset;
+        const offsetTop = element.getBoundingClientRect().top + window.scrollY;
         window.scrollTo({
           top: offsetTop,
           behavior: 'smooth'
@@ -95,7 +95,7 @@ export default function Navbar() {
           {/* Bouton du menu mobile */}
           <button 
             className="md:hidden focus:outline-none"
-            onClick={() => setIsOpen(true)}
+            onClick={() => setIsOpen(!isOpen)}
             aria-label="Ouvrir le menu"
           >
             <Menu className="h-6 w-6" />
@@ -122,11 +122,15 @@ export default function Navbar() {
         </div>
       </div>
       
-      {/* Menu mobile - Conception complètement nouvelle */}
+      {/* Menu mobile - Nouvelle conception simple et robuste */}
       {isOpen && (
-        <div className="fixed inset-0 bg-white/95 z-50 flex flex-col md:hidden">
+        <div className="fixed inset-0 bg-white z-50 flex flex-col overflow-auto md:hidden">
           <div className="p-4 flex items-center justify-between border-b">
-            <a href="#hero" onClick={(e) => handleNavigation(e, "#hero")}>
+            <a 
+              href="#hero" 
+              onClick={(e) => handleNavigation(e, "#hero")}
+              className="block"
+            >
               <img 
                 src="/lovable-uploads/a9a89586-21f7-4d9e-9b7a-379b99a7baee.png" 
                 alt="PL Training" 
@@ -135,30 +139,28 @@ export default function Navbar() {
             </a>
             <button 
               onClick={() => setIsOpen(false)}
-              className="p-1 rounded-full hover:bg-gray-100"
+              className="p-2 rounded-full hover:bg-gray-100"
               aria-label="Fermer le menu"
             >
               <X className="h-6 w-6" />
             </button>
           </div>
           
-          <div className="flex-1 overflow-auto p-4">
-            <nav className="mt-4">
-              <ul className="space-y-3">
-                {navLinks.map((link) => (
-                  <li key={link.name}>
-                    <a
-                      href={link.href}
-                      onClick={(e) => handleNavigation(e, link.href)}
-                      className="block py-3 px-4 text-lg font-medium rounded-lg hover:bg-primary/10 hover:text-primary transition-colors"
-                    >
-                      {link.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
+          <nav className="flex-1 p-4">
+            <ul className="space-y-4">
+              {navLinks.map((link) => (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
+                    onClick={(e) => handleNavigation(e, link.href)}
+                    className="block py-3 px-4 text-lg font-medium rounded-lg hover:bg-primary/10 hover:text-primary transition-colors"
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
           
           <div className="p-4 border-t">
             <div className="bg-primary/10 text-primary px-3 py-2 rounded-lg text-sm font-medium text-center">
