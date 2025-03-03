@@ -39,38 +39,32 @@ export default function Navbar() {
     };
   }, []);
 
-  // Amélioration de la gestion du scroll pour le menu mobile
+  // Gestion améliorée du scroll pour le menu mobile
   useEffect(() => {
     if (isOpen) {
-      // Sauvegarde de la position de défilement actuelle
-      const scrollY = window.scrollY;
-      document.body.style.position = 'fixed';
-      document.body.style.width = '100%';
-      document.body.style.top = `-${scrollY}px`;
+      // Désactiver le scroll du body quand le menu est ouvert
+      document.body.style.overflow = 'hidden';
     } else {
-      // Restauration de la position de défilement
-      const scrollY = document.body.style.top;
-      document.body.style.position = '';
-      document.body.style.width = '';
-      document.body.style.top = '';
-      if (scrollY) {
-        window.scrollTo(0, parseInt(scrollY || '0') * -1);
-      }
+      // Réactiver le scroll quand le menu est fermé
+      document.body.style.overflow = '';
     }
     
     return () => {
-      // Nettoyage en cas de démontage du composant
-      document.body.style.position = '';
-      document.body.style.width = '';
-      document.body.style.top = '';
+      // Nettoyage
+      document.body.style.overflow = '';
     };
   }, [isOpen]);
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
+    
+    // Fermer d'abord le menu
     setIsOpen(false);
     
-    // Petit délai pour permettre la fermeture du menu avant le défilement
+    // Réactiver le scroll
+    document.body.style.overflow = '';
+    
+    // Attendre que le menu soit fermé avant de défiler
     setTimeout(() => {
       const element = document.querySelector(href);
       if (element) {
@@ -80,7 +74,7 @@ export default function Navbar() {
           behavior: 'smooth'
         });
       }
-    }, 100);
+    }, 300); // Temps suffisant pour que l'animation de fermeture du menu se termine
   };
 
   return (
@@ -102,7 +96,7 @@ export default function Navbar() {
             </a>
           </div>
           
-          {/* Mobile menu button */}
+          {/* Bouton menu mobile */}
           <button 
             className="md:hidden focus:outline-none"
             onClick={() => setIsOpen(!isOpen)}
@@ -115,7 +109,7 @@ export default function Navbar() {
             )}
           </button>
           
-          {/* Desktop menu */}
+          {/* Menu desktop */}
           <nav className="hidden md:flex space-x-6">
             {navLinks.map((link) => (
               <a
@@ -130,29 +124,36 @@ export default function Navbar() {
           </nav>
         </div>
         
-        {/* Badge placed below the main navbar as full width */}
+        {/* Badge placé sous la navbar */}
         <div className="w-full bg-primary/10 text-primary px-3 py-1.5 rounded-lg text-sm font-medium text-center my-2">
           Plus d'une centaine de personnes aidées depuis 2019 !
         </div>
       </div>
       
-      {/* Mobile menu - Correction complète */}
-      {isOpen && (
-        <div className="fixed inset-0 bg-white z-40 pt-20 md:hidden overflow-y-auto">
-          <nav className="flex flex-col space-y-4 px-6 py-4">
+      {/* Menu mobile - Correction complète avec animation */}
+      <div 
+        className={cn(
+          "fixed inset-0 bg-white z-40 md:hidden pt-20 overflow-hidden transition-all duration-300",
+          isOpen 
+            ? "opacity-100 translate-y-0 pointer-events-auto" 
+            : "opacity-0 -translate-y-full pointer-events-none"
+        )}
+      >
+        <div className="h-full overflow-y-auto">
+          <nav className="flex flex-col px-6 py-4">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleClick(e, link.href)}
-                className="text-lg font-medium py-2 border-b border-gray-100"
+                className="text-lg font-medium py-4 border-b border-gray-100"
               >
                 {link.name}
               </a>
             ))}
           </nav>
         </div>
-      )}
+      </div>
     </header>
   );
 }

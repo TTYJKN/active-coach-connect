@@ -103,7 +103,7 @@
     @apply bg-white/70 backdrop-blur-sm border border-white/50 shadow-md;
   }
   
-  /* Animations for scroll reveal */
+  /* Animations pour la révélation au scroll */
   .reveal {
     opacity: 0;
     transform: translateY(30px);
@@ -113,6 +113,29 @@
   .reveal.active {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  /* Animations pour le menu mobile */
+  .mobile-menu-enter {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  
+  .mobile-menu-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 300ms, transform 300ms;
+  }
+  
+  .mobile-menu-exit {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .mobile-menu-exit-active {
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: opacity 300ms, transform 300ms;
   }
 
   .btn-primary {
