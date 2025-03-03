@@ -19,13 +19,13 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="section-container">
+    <section id="testimonials" className="section-container py-16 relative z-10 bg-white">
       <h2 className="section-title">Témoignages & Transformations</h2>
       
       <div className="max-w-5xl mx-auto">
         <div className="grid md:grid-cols-2 gap-8 mb-16">
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="card-glass p-6 md:p-8">
+            <div key={index} className="card-glass p-6 md:p-8 bg-white/90 backdrop-blur-sm">
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-16 h-16 rounded-full overflow-hidden">
                   <img 
@@ -43,19 +43,19 @@ export default function Testimonials() {
                   </div>
                 </div>
               </div>
-              <p className="text-foreground/80 italic">"{testimonial.text}"</p>
+              <p className="text-foreground/80 italic">{testimonial.text}</p>
             </div>
           ))}
         </div>
         
         {/* Transformation case study */}
-        <div className="card-glass p-8 md:p-10 max-w-4xl mx-auto">
+        <div className="card-glass p-8 md:p-10 max-w-4xl mx-auto bg-white/90 backdrop-blur-sm">
           <h3 className="text-xl md:text-2xl font-semibold mb-6 text-center">Transformation marquante</h3>
           
           <div className="flex flex-col md:flex-row gap-8 items-center">
             <div className="flex-1">
               <div className="relative">
-                <div className="absolute top-2 left-2 bg-white/80 backdrop-blur-sm text-sm font-medium px-3 py-1 rounded-full">
+                <div className="absolute top-2 left-2 bg-white/90 backdrop-blur-sm text-sm font-medium px-3 py-1 rounded-full">
                   Avant
                 </div>
                 <img 
@@ -68,7 +68,7 @@ export default function Testimonials() {
             
             <div className="flex-1">
               <div className="relative">
-                <div className="absolute top-2 left-2 bg-primary/80 backdrop-blur-sm text-white text-sm font-medium px-3 py-1 rounded-full">
+                <div className="absolute top-2 left-2 bg-primary/90 backdrop-blur-sm text-white text-sm font-medium px-3 py-1 rounded-full">
                   Après
                 </div>
                 <img 

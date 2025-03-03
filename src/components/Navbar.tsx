@@ -60,17 +60,21 @@ export default function Navbar() {
     // Fermer le menu mobile avant de naviguer
     setIsOpen(false);
     
-    // Utiliser requestAnimationFrame pour s'assurer que le menu est fermé avant de défiler
-    requestAnimationFrame(() => {
-      const element = document.querySelector(href);
-      if (element) {
-        const offsetTop = element.getBoundingClientRect().top + window.scrollY;
-        window.scrollTo({
-          top: offsetTop,
-          behavior: 'smooth'
-        });
-      }
-    });
+    // Force le rendu complet avant le scroll
+    setTimeout(() => {
+      document.body.style.overflow = '';
+      
+      requestAnimationFrame(() => {
+        const element = document.querySelector(href);
+        if (element) {
+          const offsetTop = element.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+        }
+      });
+    }, 100); // Petit délai pour s'assurer que le menu est complètement fermé
   };
 
   return (
