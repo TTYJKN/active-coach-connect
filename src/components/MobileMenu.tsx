@@ -73,7 +73,9 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
   return (
     <div 
       className={cn(
-        "fixed inset-0 bg-white z-50 flex flex-col transition-opacity duration-300",
+        "fixed inset-0 z-50 flex flex-col transition-opacity duration-300",
+        // Ensure we have a solid background color, not transparent
+        "bg-white",
         visible ? "opacity-100" : "opacity-0"
       )}
       aria-hidden={!visible}
