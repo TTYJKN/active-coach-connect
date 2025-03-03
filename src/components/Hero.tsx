@@ -5,12 +5,12 @@ import { Mail, MessageSquare } from 'lucide-react';
 export default function Hero() {
   return (
     <section id="hero" className="relative min-h-screen flex items-center pt-6 md:pt-14">
-      {/* Background image with overlay */}
+      {/* Background image with overlay - with responsive positioning */}
       <div className="absolute inset-0 z-0">
         <img 
           src="/lovable-uploads/592d2aca-c44c-4352-bfbf-d209c5f2e0f7.png"
           alt="Coach sportif en action" 
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover md:object-top" // Added md:object-top to position differently on desktop
         />
         {/* Removing the white overlay div */}
       </div>
