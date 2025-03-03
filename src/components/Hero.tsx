@@ -8,7 +8,7 @@ export default function Hero() {
       {/* Background image with overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=2070&auto=format&fit=crop"
+          src="/lovable-uploads/32db7fc1-d06d-40b5-83da-f1342f8a98fc.png"
           alt="Coach sportif en action" 
           className="w-full h-full object-cover"
         />
