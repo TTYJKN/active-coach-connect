@@ -22,6 +22,7 @@ const navLinks: NavLink[] = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [menuVisible, setMenuVisible] = useState(false);
 
   // Surveiller le défilement pour changer l'apparence de la navbar
   useEffect(() => {
@@ -44,8 +45,13 @@ export default function Navbar() {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
+      // Après animation d'ouverture
+      setTimeout(() => {
+        setMenuVisible(true);
+      }, 50);
     } else {
       document.body.style.overflow = '';
+      setMenuVisible(false);
     }
     
     return () => {
@@ -60,21 +66,25 @@ export default function Navbar() {
     // Fermer le menu mobile avant de naviguer
     setIsOpen(false);
     
-    // Force le rendu complet avant le scroll
+    // S'assurer que le menu est complètement fermé et retiré du flux avant le défilement
     setTimeout(() => {
       document.body.style.overflow = '';
       
-      requestAnimationFrame(() => {
-        const element = document.querySelector(href);
-        if (element) {
-          const offsetTop = element.getBoundingClientRect().top + window.scrollY;
-          window.scrollTo({
-            top: offsetTop,
-            behavior: 'smooth'
-          });
-        }
-      });
-    }, 100); // Petit délai pour s'assurer que le menu est complètement fermé
+      const element = document.querySelector(href);
+      if (element) {
+        const offsetTop = element.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({
+          top: offsetTop,
+          behavior: 'smooth'
+        });
+      }
+    }, 300); // Délai plus long pour s'assurer que les transitions CSS sont terminées
+  };
+
+  // Fonction qui ferme complètement le menu
+  const closeMenuCompletely = () => {
+    setIsOpen(false);
+    setMenuVisible(false);
   };
 
   return (
@@ -126,9 +136,15 @@ export default function Navbar() {
         </div>
       </div>
       
-      {/* Menu mobile - Conception améliorée pour éviter les problèmes de transparence */}
+      {/* Menu mobile - Correction du problème de transparence */}
       {isOpen && (
-        <div className="fixed inset-0 bg-white z-50 flex flex-col overflow-auto md:hidden">
+        <div 
+          className={cn(
+            "fixed inset-0 bg-white z-50 flex flex-col overflow-auto md:hidden transition-opacity duration-300",
+            menuVisible ? "opacity-100" : "opacity-0"
+          )}
+          style={{ display: isOpen ? 'flex' : 'none' }}
+        >
           <div className="p-4 flex items-center justify-between border-b">
             <a 
               href="#hero" 
@@ -142,7 +158,7 @@ export default function Navbar() {
               />
             </a>
             <button 
-              onClick={() => setIsOpen(false)}
+              onClick={closeMenuCompletely}
               className="p-2 rounded-full hover:bg-gray-100"
               aria-label="Fermer le menu"
             >
