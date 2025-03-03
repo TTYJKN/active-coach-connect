@@ -17,8 +17,8 @@ export default function Hero() {
       
       <div className="container mx-auto px-4 z-10 py-4 md:py-8">
         <div className="max-w-3xl mx-auto text-center">
-          {/* CTA Buttons - further increased margin-top to move them down more */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-48 animate-fade-up" style={{ animationDelay: '0.4s' }}>
+          {/* CTA Buttons - further increased margin-top to move them down even more */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-64 animate-fade-up" style={{ animationDelay: '0.4s' }}>
             <a 
               href="mailto:contact@pierrelefebvre.fr" 
               className="btn-primary"
