@@ -39,18 +39,15 @@ export default function Navbar() {
     };
   }, []);
 
-  // Gestion améliorée du scroll pour le menu mobile
+  // Manage body scroll when mobile menu is open
   useEffect(() => {
     if (isOpen) {
-      // Désactiver le scroll du body quand le menu est ouvert
       document.body.style.overflow = 'hidden';
     } else {
-      // Réactiver le scroll quand le menu est fermé
       document.body.style.overflow = '';
     }
     
     return () => {
-      // Nettoyage
       document.body.style.overflow = '';
     };
   }, [isOpen]);
@@ -58,13 +55,10 @@ export default function Navbar() {
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     
-    // Fermer d'abord le menu
+    // First close the menu
     setIsOpen(false);
     
-    // Réactiver le scroll
-    document.body.style.overflow = '';
-    
-    // Attendre que le menu soit fermé avant de défiler
+    // Wait for menu animation to complete before scrolling
     setTimeout(() => {
       const element = document.querySelector(href);
       if (element) {
@@ -74,7 +68,7 @@ export default function Navbar() {
           behavior: 'smooth'
         });
       }
-    }, 300); // Temps suffisant pour que l'animation de fermeture du menu se termine
+    }, 300);
   };
 
   return (
@@ -96,20 +90,16 @@ export default function Navbar() {
             </a>
           </div>
           
-          {/* Bouton menu mobile */}
+          {/* Mobile menu button */}
           <button 
             className="md:hidden focus:outline-none"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
+            onClick={() => setIsOpen(true)}
+            aria-label="Open menu"
           >
-            {isOpen ? (
-              <X className="h-6 w-6" />
-            ) : (
-              <Menu className="h-6 w-6" />
-            )}
+            <Menu className="h-6 w-6" />
           </button>
           
-          {/* Menu desktop */}
+          {/* Desktop menu */}
           <nav className="hidden md:flex space-x-6">
             {navLinks.map((link) => (
               <a
@@ -124,36 +114,58 @@ export default function Navbar() {
           </nav>
         </div>
         
-        {/* Badge placé sous la navbar */}
+        {/* Badge */}
         <div className="w-full bg-primary/10 text-primary px-3 py-1.5 rounded-lg text-sm font-medium text-center my-2">
           Plus d'une centaine de personnes aidées depuis 2019 !
         </div>
       </div>
       
-      {/* Menu mobile - Correction complète avec animation */}
-      <div 
-        className={cn(
-          "fixed inset-0 bg-white z-40 md:hidden pt-20 overflow-hidden transition-all duration-300",
-          isOpen 
-            ? "opacity-100 translate-y-0 pointer-events-auto" 
-            : "opacity-0 -translate-y-full pointer-events-none"
-        )}
-      >
-        <div className="h-full overflow-y-auto">
-          <nav className="flex flex-col px-6 py-4">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => handleClick(e, link.href)}
-                className="text-lg font-medium py-4 border-b border-gray-100"
-              >
-                {link.name}
-              </a>
-            ))}
+      {/* NEW MOBILE MENU - Completely redesigned as a full-screen fixed overlay with X button */}
+      {isOpen && (
+        <div className="fixed inset-0 bg-white z-50 md:hidden flex flex-col">
+          {/* Close button header */}
+          <div className="flex items-center justify-between p-4 border-b">
+            <div className="flex items-center">
+              <img 
+                src="/lovable-uploads/a9a89586-21f7-4d9e-9b7a-379b99a7baee.png" 
+                alt="PL Training" 
+                className="h-12 w-auto" 
+              />
+            </div>
+            <button 
+              onClick={() => setIsOpen(false)}
+              className="p-2 rounded-full hover:bg-gray-100"
+              aria-label="Close menu"
+            >
+              <X className="h-6 w-6" />
+            </button>
+          </div>
+          
+          {/* Navigation links */}
+          <nav className="flex-1 overflow-y-auto py-6 px-4">
+            <ul className="space-y-4">
+              {navLinks.map((link) => (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
+                    onClick={(e) => handleClick(e, link.href)}
+                    className="block py-3 px-4 text-lg font-medium text-foreground hover:bg-primary/10 hover:text-primary rounded-lg transition-colors"
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </nav>
+          
+          {/* Footer with badge */}
+          <div className="p-4 border-t">
+            <div className="bg-primary/10 text-primary px-3 py-2 rounded-lg text-sm font-medium text-center">
+              Plus d'une centaine de personnes aidées depuis 2019 !
+            </div>
+          </div>
         </div>
-      </div>
+      )}
     </header>
   );
 }
