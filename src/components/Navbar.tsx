@@ -136,30 +136,23 @@ export default function Navbar() {
         </div>
       </div>
       
-      {/* Mobile menu - Correction du problème de transparence */}
-      <div 
-        className={cn(
-          "fixed inset-0 bg-white z-40 md:hidden",
-          isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-        )}
-        style={{ 
-          transition: "opacity 300ms ease-in-out",
-          paddingTop: "5rem"
-        }}
-      >
-        <nav className="flex flex-col space-y-4 px-6">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              onClick={(e) => handleClick(e, link.href)}
-              className="text-lg font-medium py-2 border-b border-gray-100"
-            >
-              {link.name}
-            </a>
-          ))}
-        </nav>
-      </div>
+      {/* Mobile menu - Correction complète */}
+      {isOpen && (
+        <div className="fixed inset-0 bg-white z-40 pt-20 md:hidden overflow-y-auto">
+          <nav className="flex flex-col space-y-4 px-6 py-4">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={(e) => handleClick(e, link.href)}
+                className="text-lg font-medium py-2 border-b border-gray-100"
+              >
+                {link.name}
+              </a>
+            ))}
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
