@@ -69,8 +69,7 @@ export default function Navbar() {
   return (
     <header 
       className={cn(
-        "fixed top-0 left-0 right-0 z-40 transition-all duration-300",
-        scrolled ? "bg-white shadow-sm" : "bg-transparent"
+        "fixed top-0 left-0 right-0 z-40 transition-all duration-300 bg-white shadow-sm"
       )}
     >
       <div className="container mx-auto px-4">
@@ -88,6 +87,11 @@ export default function Navbar() {
               />
             </a>
           </div>
+          
+          {/* Pierre Lefebvre name - added between logo and menu */}
+          <h1 className="text-xl md:text-2xl font-bold text-primary">
+            Pierre Lefebvre
+          </h1>
           
           {/* Mobile menu button */}
           <button 

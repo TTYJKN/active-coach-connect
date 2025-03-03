@@ -17,11 +17,6 @@ export default function Hero() {
       
       <div className="container mx-auto px-4 z-10 py-4 md:py-8">
         <div className="max-w-3xl mx-auto text-center">
-          {/* Main heading - reduced size */}
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 leading-tight animate-fade-up text-white mt-[-40px]">
-            Pierre Lefebvre
-          </h1>
-          
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8 animate-fade-up" style={{ animationDelay: '0.4s' }}>
             <a 
