@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Clock, Flame, Stretch, MessageCircle, Dumbbell } from 'lucide-react';
+import { Clock, Flame, ArrowRight, MessageCircle, Dumbbell } from 'lucide-react';
 
 export default function Session() {
   return (
@@ -50,7 +50,7 @@ export default function Session() {
             <div className="flex gap-4">
               <div className="flex-shrink-0">
                 <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Stretch className="h-5 w-5 text-primary" />
+                  <ArrowRight className="h-5 w-5 text-primary" />
                 </div>
               </div>
               <div>
