@@ -40,13 +40,17 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
       setVisible(false);
       
       // Démonter le composant après la fin de l'animation
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         if (!isOpen) {
           setMounted(false);
           // Restaurer le scroll du body
           document.body.style.overflow = '';
         }
       }, 300);
+      
+      return () => {
+        clearTimeout(timer);
+      };
     }
 
     // Nettoyage
@@ -62,10 +66,8 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
     // Fermer le menu
     onClose();
     
-    // Attendre la fin de l'animation avant de naviguer
-    setTimeout(() => {
-      onNavigate(href);
-    }, 300);
+    // Naviguer immédiatement, mais permettre à l'animation de se terminer
+    onNavigate(href);
   };
 
   if (!mounted) return null;
@@ -74,7 +76,6 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
     <div 
       className={cn(
         "fixed inset-0 z-50 flex flex-col transition-opacity duration-300",
-        // Ensure we have a solid background color, not transparent
         "bg-white",
         visible ? "opacity-100" : "opacity-0"
       )}

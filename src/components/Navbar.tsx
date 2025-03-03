@@ -36,7 +36,7 @@ export default function Navbar() {
     };
   }, []);
 
-  // Fonction pour la navigation sur desktop
+  // Fonction pour la navigation sur desktop et mobile
   const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     scrollToSection(href);
@@ -44,13 +44,20 @@ export default function Navbar() {
 
   // Fonction commune pour le défilement vers une section
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      const offsetTop = element.getBoundingClientRect().top + window.scrollY;
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth'
-      });
+    try {
+      const element = document.querySelector(href);
+      if (element) {
+        // Utiliser requestAnimationFrame pour s'assurer que le défilement fonctionne correctement
+        requestAnimationFrame(() => {
+          const offsetTop = element.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+        });
+      }
+    } catch (error) {
+      console.error("Erreur lors du défilement:", error);
     }
   };
 
@@ -64,7 +71,11 @@ export default function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
           <div className="flex items-center">
-            <a href="#hero" className="block">
+            <a 
+              href="#hero" 
+              onClick={(e) => handleNavigation(e, "#hero")}
+              className="block"
+            >
               <img 
                 src="/lovable-uploads/a9a89586-21f7-4d9e-9b7a-379b99a7baee.png" 
                 alt="PL Training" 
