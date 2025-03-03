@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { cn } from "@/lib/utils";
 import { Menu, X } from 'lucide-react';
+import MobileMenu from './MobileMenu';
 
 interface NavLink {
   name: string;
@@ -20,20 +21,13 @@ const navLinks: NavLink[] = [
 ];
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [menuVisible, setMenuVisible] = useState(false);
-  const [menuFullyClosed, setMenuFullyClosed] = useState(true);
 
   // Surveiller le défilement pour changer l'apparence de la navbar
   useEffect(() => {
     const handleScroll = () => {
-      const offset = window.scrollY;
-      if (offset > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 50);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -42,55 +36,22 @@ export default function Navbar() {
     };
   }, []);
 
-  // Gérer le défilement du body lorsque le menu mobile est ouvert
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-      setMenuFullyClosed(false);
-      // Après animation d'ouverture
-      setTimeout(() => {
-        setMenuVisible(true);
-      }, 50);
-    } else {
-      document.body.style.overflow = '';
-      setMenuVisible(false);
-      // S'assurer que le menu est complètement fermé après la transition
-      setTimeout(() => {
-        setMenuFullyClosed(true);
-      }, 300);
-    }
-    
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isOpen]);
-
-  // Fonction pour la navigation
+  // Fonction pour la navigation sur desktop
   const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    
-    // Fermer le menu mobile avant de naviguer
-    setIsOpen(false);
-    
-    // S'assurer que le menu est complètement fermé et retiré du flux avant le défilement
-    setTimeout(() => {
-      document.body.style.overflow = '';
-      
-      const element = document.querySelector(href);
-      if (element) {
-        const offsetTop = element.getBoundingClientRect().top + window.scrollY;
-        window.scrollTo({
-          top: offsetTop,
-          behavior: 'smooth'
-        });
-      }
-    }, 350); // Délai plus long pour s'assurer que les transitions CSS sont terminées
+    scrollToSection(href);
   };
 
-  // Fonction qui ferme complètement le menu
-  const closeMenuCompletely = () => {
-    setIsOpen(false);
-    setMenuVisible(false);
+  // Fonction commune pour le défilement vers une section
+  const scrollToSection = (href: string) => {
+    const element = document.querySelector(href);
+    if (element) {
+      const offsetTop = element.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      });
+    }
   };
 
   return (
@@ -115,7 +76,7 @@ export default function Navbar() {
           {/* Bouton du menu mobile */}
           <button 
             className="md:hidden focus:outline-none"
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={() => setIsMenuOpen(true)}
             aria-label="Ouvrir le menu"
           >
             <Menu className="h-6 w-6" />
@@ -135,60 +96,15 @@ export default function Navbar() {
             ))}
           </nav>
         </div>
-        
-        {/* Badge supprimé */}
       </div>
       
-      {/* Menu mobile - Correction du problème de transparence */}
-      {!menuFullyClosed && (
-        <div 
-          className={cn(
-            "fixed inset-0 bg-white z-50 flex flex-col overflow-auto md:hidden",
-            menuVisible ? "opacity-100" : "opacity-0",
-            "transition-opacity duration-300"
-          )}
-          style={{ pointerEvents: isOpen ? 'auto' : 'none' }}
-        >
-          <div className="p-4 flex items-center justify-between border-b">
-            <a 
-              href="#hero" 
-              onClick={(e) => handleNavigation(e, "#hero")}
-              className="block"
-            >
-              <img 
-                src="/lovable-uploads/a9a89586-21f7-4d9e-9b7a-379b99a7baee.png" 
-                alt="PL Training" 
-                className="h-10 w-auto" 
-              />
-            </a>
-            <button 
-              onClick={closeMenuCompletely}
-              className="p-2 rounded-full hover:bg-gray-100"
-              aria-label="Fermer le menu"
-            >
-              <X className="h-6 w-6" />
-            </button>
-          </div>
-          
-          <nav className="flex-1 p-4">
-            <ul className="space-y-4">
-              {navLinks.map((link) => (
-                <li key={link.name}>
-                  <a
-                    href={link.href}
-                    onClick={(e) => handleNavigation(e, link.href)}
-                    className="block py-3 px-4 text-lg font-medium rounded-lg hover:bg-primary/10 hover:text-primary transition-colors"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-          
-          {/* Badge mobile supprimé */}
-        </div>
-      )}
+      {/* Menu mobile - Utilise un composant séparé */}
+      <MobileMenu 
+        isOpen={isMenuOpen} 
+        onClose={() => setIsMenuOpen(false)} 
+        navLinks={navLinks}
+        onNavigate={scrollToSection}
+      />
     </header>
   );
 }
