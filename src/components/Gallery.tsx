@@ -79,27 +79,7 @@ export default function Gallery() {
   };
   
   return (
-    <section id="gallery" className="section-container py-20" onKeyDown={handleKeyDown} tabIndex={-1}>
-      <h2 className="section-title">Galerie Photos</h2>
-      
-      <div className="max-w-[1400px] mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {galleryImages.map((image, index) => (
-            <div 
-              key={index} 
-              className="aspect-square overflow-hidden rounded-lg shadow-md cursor-pointer hover:shadow-lg transition-all"
-              onClick={() => openViewer(index)}
-            >
-              <img 
-                src={image} 
-                alt={`Photo de coaching ${index + 1}`} 
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-      
+    <div onKeyDown={handleKeyDown} tabIndex={-1} id="gallery" className="hidden">
       {/* Photo viewer modal */}
       {selectedImage !== null && (
         <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center">
@@ -142,6 +122,6 @@ export default function Gallery() {
           </div>
         </div>
       )}
-    </section>
+    </div>
   );
 }
