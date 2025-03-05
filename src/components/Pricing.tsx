@@ -1,10 +1,7 @@
-
 import React from 'react';
 import { Users, User } from 'lucide-react';
-
 export default function Pricing() {
-  return (
-    <section id="pricing" className="section-container bg-secondary/50">
+  return <section id="pricing" className="section-container bg-secondary/50">
       <h2 className="section-title">Tarifs & Offres</h2>
       
       <div className="max-w-4xl mx-auto">
@@ -44,9 +41,7 @@ export default function Pricing() {
             </ul>
             
             <div className="mt-auto">
-              <a href="#contact" className="btn-primary w-full">
-                Réserver
-              </a>
+              <a href="#contact" className="btn-primary w-full">la Réserver</a>
             </div>
           </div>
           
@@ -157,6 +152,5 @@ export default function Pricing() {
           </a>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 }
