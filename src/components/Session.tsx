@@ -7,9 +7,10 @@ export default function Session() {
     <section id="session" className="section-container py-12 md:py-16 bg-secondary/30 reveal">
       <h2 className="section-title mb-6">Comment se déroule une séance ?</h2>
       
-      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-8 items-center">
-        <div className="w-full lg:w-1/2">
-          <div className="card-glass p-6 md:p-8">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+        {/* Content column */}
+        <div className="w-full">
+          <div className="card-glass p-6 md:p-8 h-full flex flex-col">
             <div className="flex justify-center mb-6">
               <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full">
                 <Clock className="h-5 w-5 text-primary" />
@@ -17,7 +18,7 @@ export default function Session() {
               </div>
             </div>
             
-            <div className="space-y-6">
+            <div className="space-y-6 flex-grow">
               <div className="flex gap-4">
                 <div className="flex-shrink-0">
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
@@ -88,12 +89,14 @@ export default function Session() {
         </div>
         
         {/* Session image */}
-        <div className="w-full lg:w-1/2 overflow-hidden rounded-xl shadow-lg h-auto">
-          <img 
-            src="/lovable-uploads/b610a884-c6ec-45e9-94ea-fee03ac639ee.png" 
-            alt="Séance d'entraînement personnalisée" 
-            className="w-full h-auto object-cover"
-          />
+        <div className="w-full h-full flex items-center justify-center">
+          <div className="overflow-hidden rounded-xl shadow-lg w-full h-auto aspect-[4/3]">
+            <img 
+              src="/lovable-uploads/b610a884-c6ec-45e9-94ea-fee03ac639ee.png" 
+              alt="Séance d'entraînement personnalisée" 
+              className="w-full h-full object-cover"
+            />
+          </div>
         </div>
       </div>
     </section>
