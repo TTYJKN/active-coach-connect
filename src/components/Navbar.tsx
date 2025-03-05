@@ -10,7 +10,6 @@ interface NavLink {
 
 const navLinks: NavLink[] = [
   { name: "Accueil", href: "#hero" },
-  { name: "Pourquoi moi ?", href: "#why-choose-me" },
   { name: "Services", href: "#services" },
   { name: "Témoignages", href: "#testimonials" },
   { name: "Tarifs", href: "#pricing" },
