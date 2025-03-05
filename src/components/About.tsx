@@ -24,7 +24,7 @@ export default function About() {
           <div className="md:w-1/3">
             <div className="rounded-full overflow-hidden aspect-square w-64 mx-auto shadow-lg border-4 border-white">
               <img 
-                src="https://images.unsplash.com/photo-1594381898411-846e7d193883?q=80&w=1374&auto=format&fit=crop"
+                src="/lovable-uploads/077547bf-5425-4909-b70b-67a9c4ad7d90.png"
                 alt="Pierre Lefebvre" 
                 className="w-full h-full object-cover"
               />
@@ -74,3 +74,4 @@ export default function About() {
     </section>
   );
 }
+
