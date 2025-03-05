@@ -98,7 +98,7 @@ export default function Gym() {
             </div>
             
             <div className="text-center mt-6">
-              <a href="mailto:pierrelefebvretraining@gmail.com" className="btn-primary mx-auto inline-flex">
+              <a href="mailto:pierrelefebvretraining@gmail.com" className="btn-primary mx-auto inline-flex animate-pulse-soft hover:scale-105 transition-transform">
                 Découvrez mon espace d'entraînement !
               </a>
             </div>
