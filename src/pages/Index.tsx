@@ -12,6 +12,7 @@ import About from '@/components/About';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import Gallery from '@/components/Gallery';
+import ScrollingBanner from '@/components/ScrollingBanner';
 import { Dumbbell } from 'lucide-react';
 
 const Index = () => {
@@ -67,6 +68,7 @@ const Index = () => {
       
       <Navbar />
       <Hero />
+      <ScrollingBanner />
       <WhyChooseMe />
       <Services />
       <Session />
