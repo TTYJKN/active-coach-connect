@@ -79,7 +79,7 @@ export default function Gallery() {
   };
   
   return (
-    <div onKeyDown={handleKeyDown} tabIndex={-1} id="gallery" className="hidden">
+    <section id="gallery" className="sr-only" onKeyDown={handleKeyDown} tabIndex={-1}>
       {/* Photo viewer modal */}
       {selectedImage !== null && (
         <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center">
@@ -122,6 +122,6 @@ export default function Gallery() {
           </div>
         </div>
       )}
-    </div>
+    </section>
   );
 }
