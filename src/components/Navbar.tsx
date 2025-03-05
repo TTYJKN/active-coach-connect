@@ -34,6 +34,32 @@ export default function Navbar() {
 
   const scrollToSection = (href: string) => {
     try {
+      // Check for '#gallery' to trigger gallery display
+      if (href === '#gallery') {
+        // Find the element
+        const gallerySection = document.querySelector(href);
+        
+        // If the gallery section exists, scroll to it
+        if (gallerySection) {
+          const navbarHeight = 64;
+          const elementPosition = gallerySection.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.scrollY - navbarHeight;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        } else {
+          console.log("Gallery section not found, but we'll still open gallery");
+        }
+        
+        // Dispatch a custom event to open gallery
+        const galleryEvent = new CustomEvent('openGallery');
+        document.dispatchEvent(galleryEvent);
+        return;
+      }
+      
+      // For non-gallery sections
       const element = document.querySelector(href);
       if (!element) {
         console.warn(`Element with selector "${href}" not found`);
