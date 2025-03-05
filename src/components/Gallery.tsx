@@ -137,7 +137,7 @@ export default function Gallery() {
         <div className="text-center mt-6">
           <button 
             onClick={() => openViewer(0)}
-            className="btn-primary mx-auto inline-flex hover-scale"
+            className="btn-primary btn-highlight mx-auto inline-flex"
           >
             Voir toutes les photos
           </button>

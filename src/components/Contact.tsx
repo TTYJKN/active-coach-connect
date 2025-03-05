@@ -15,7 +15,7 @@ export default function Contact() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
             <a 
               href="mailto:pierrelefebvretraining@gmail.com" 
-              className="btn-primary"
+              className="btn-primary btn-highlight"
             >
               <Mail className="w-5 h-5" />
               <span>M'envoyer un mail</span>
