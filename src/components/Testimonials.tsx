@@ -5,7 +5,7 @@ import { StarIcon } from 'lucide-react';
 const testimonials = [
   {
     name: "Thomas",
-    image: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=1470&auto=format&fit=crop",
+    image: "/lovable-uploads/1dfa93d4-64eb-4537-8827-8011cf035547.png",
     text: "Pierre m'a aidé à me remettre en forme après une blessure. Aujourd'hui, je n'ai plus de douleurs et je me sens énergique !",
     stars: 5
   },
