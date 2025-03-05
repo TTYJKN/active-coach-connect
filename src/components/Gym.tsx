@@ -1,12 +1,10 @@
-
 import React from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const gymImages = [
-  "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?q=80&w=1470&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=1470&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1470&auto=format&fit=crop"
+  "/lovable-uploads/496f455b-0b60-4a0e-96ef-625768d92a27.png",
+  "/lovable-uploads/70c60fbc-cf8e-425a-8026-8fadeeb825e9.png",
+  "/lovable-uploads/3dbf3e12-98fa-48c1-a045-b8d5478b5882.png"
 ];
 
 export default function Gym() {
