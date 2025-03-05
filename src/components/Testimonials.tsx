@@ -86,7 +86,7 @@ export default function Testimonials() {
               "Après 6 mois d'entraînement avec Pierre, j'ai non seulement perdu 12kg, mais j'ai surtout gagné en énergie et en confiance. Le suivi personnalisé a fait toute la différence."
             </p>
             
-            <a href="#contact" className="btn-primary mx-auto inline-flex">
+            <a href="mailto:pierrelefebvretraining@gmail.com" className="btn-primary mx-auto inline-flex">
               Prêt à transformer votre corps ? Contactez-moi !
             </a>
           </div>

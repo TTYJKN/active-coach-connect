@@ -76,7 +76,7 @@ export default function Services() {
       </div>
       
       <div className="mt-12 text-center">
-        <a href="#contact" className="btn-primary mx-auto inline-flex">
+        <a href="mailto:pierrelefebvretraining@gmail.com" className="btn-primary mx-auto inline-flex">
           Réservez votre séance d'essai gratuite !
         </a>
       </div>

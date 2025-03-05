@@ -35,7 +35,7 @@ export default function WhyChooseMe() {
           
           <div className="mt-10 text-center">
             <a
-              href="#contact"
+              href="mailto:pierrelefebvretraining@gmail.com"
               className="btn-primary mx-auto inline-flex"
             >
               Contactez-moi dès aujourd'hui pour votre séance offerte !

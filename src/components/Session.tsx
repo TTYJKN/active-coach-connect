@@ -79,7 +79,7 @@ export default function Session() {
           </div>
           
           <div className="mt-10 text-center">
-            <a href="#contact" className="btn-primary mx-auto inline-flex">
+            <a href="mailto:pierrelefebvretraining@gmail.com" className="btn-primary mx-auto inline-flex">
               Je suis prêt à commencer ! Contactez-moi !
             </a>
           </div>

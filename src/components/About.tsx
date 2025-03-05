@@ -63,7 +63,7 @@ export default function About() {
               )}
               
               <div className="text-center mt-6">
-                <a href="#contact" className="btn-primary mx-auto inline-flex">
+                <a href="mailto:pierrelefebvretraining@gmail.com" className="btn-primary mx-auto inline-flex">
                   Envie d'en savoir plus ? Contactez-moi !
                 </a>
               </div>
