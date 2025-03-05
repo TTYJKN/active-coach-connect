@@ -56,7 +56,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white overflow-hidden">
+    <div className="min-h-screen bg-white">
       {/* Loading animation */}
       <div id="loader" className="fixed inset-0 z-[100] flex items-center justify-center bg-white">
         <div className="animate-pulse-soft">
