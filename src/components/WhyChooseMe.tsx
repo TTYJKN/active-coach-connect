@@ -13,12 +13,12 @@ const advantages = [
 
 export default function WhyChooseMe() {
   return (
-    <section id="why-choose-me" className="section-container bg-secondary/50">
+    <section id="why-choose-me" className="section-container bg-secondary/50 reveal">
       <div className="max-w-4xl mx-auto">
         <h2 className="section-title">Pourquoi choisir Pierre Lefebvre ?</h2>
         
         <div className="card-glass p-8 md:p-10">
-          <p className="text-lg text-center mb-10">
+          <p className="text-lg text-center mb-8">
             Ancien basketteur de haut niveau, aujourd'hui coach sportif et préparateur physique, j'accompagne chaque personne dans sa transformation physique avec un suivi personnalisé et adapté à ses objectifs.
           </p>
           
@@ -33,7 +33,7 @@ export default function WhyChooseMe() {
             ))}
           </div>
           
-          <div className="mt-10 text-center">
+          <div className="mt-8 text-center">
             <a
               href="mailto:pierrelefebvretraining@gmail.com"
               className="btn-primary mx-auto inline-flex"

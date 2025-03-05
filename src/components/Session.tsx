@@ -88,9 +88,9 @@ export default function Session() {
         </div>
         
         {/* Session image */}
-        <div className="w-full lg:w-1/2 overflow-hidden rounded-xl shadow-lg">
+        <div className="w-full lg:w-1/2 overflow-hidden rounded-xl shadow-lg h-auto">
           <img 
-            src="/lovable-uploads/1fcfc9dd-104a-4fd8-965c-51211a3ae53f.png" 
+            src="/lovable-uploads/006a361f-ed2c-429c-97a6-285046505413.png" 
             alt="Séance d'entraînement personnalisée" 
             className="w-full h-auto object-cover"
           />

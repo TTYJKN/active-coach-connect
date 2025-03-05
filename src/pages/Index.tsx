@@ -51,30 +51,29 @@ const Index = () => {
     };
   }, []);
 
-  return (
-    <div className="min-h-screen bg-white overflow-hidden">
-      {/* Loading animation */}
-      {isLoading ? (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-white">
-          <div className="animate-pulse-soft">
-            <Dumbbell className="w-12 h-12 text-primary" />
-          </div>
+  if (isLoading) {
+    return (
+      <div className="fixed inset-0 z-[100] flex items-center justify-center bg-white">
+        <div className="animate-pulse-soft">
+          <Dumbbell className="w-12 h-12 text-primary" />
         </div>
-      ) : (
-        <>
-          <Navbar />
-          <Hero />
-          <WhyChooseMe />
-          <Services />
-          <Session />
-          <Testimonials />
-          <Pricing />
-          <Gym />
-          <About />
-          <Contact />
-          <Footer />
-        </>
-      )}
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-white">
+      <Navbar />
+      <Hero />
+      <WhyChooseMe />
+      <Services />
+      <Session />
+      <Testimonials />
+      <Pricing />
+      <Gym />
+      <About />
+      <Contact />
+      <Footer />
     </div>
   );
 }

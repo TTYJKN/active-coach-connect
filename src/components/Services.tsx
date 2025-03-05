@@ -4,12 +4,12 @@ import { Activity, Dumbbell } from 'lucide-react';
 
 export default function Services() {
   return (
-    <section id="services" className="section-container">
+    <section id="services" className="section-container reveal">
       <h2 className="section-title">Mes services</h2>
       
       <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
         {/* Service 1: Coaching Sportif */}
-        <div className="card-glass p-6 md:p-8 flex flex-col items-center text-center">
+        <div className="card-glass p-6 md:p-8 flex flex-col items-center text-center h-full">
           <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6">
             <Activity className="w-8 h-8 text-primary" />
           </div>
@@ -19,7 +19,7 @@ export default function Services() {
             Pour les personnes sédentaires ou souhaitant retrouver la forme
           </p>
           
-          <ul className="space-y-3 mb-8 text-left">
+          <ul className="space-y-3 mb-6 text-left">
             <li className="flex items-center gap-2">
               <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
                 <span className="text-primary text-xs font-bold">✓</span>
@@ -42,7 +42,7 @@ export default function Services() {
         </div>
         
         {/* Service 2: Préparation Physique */}
-        <div className="card-glass p-6 md:p-8 flex flex-col items-center text-center">
+        <div className="card-glass p-6 md:p-8 flex flex-col items-center text-center h-full">
           <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6">
             <Dumbbell className="w-8 h-8 text-primary" />
           </div>
@@ -52,7 +52,7 @@ export default function Services() {
             Pour les sportifs souhaitant optimiser leurs performances
           </p>
           
-          <ul className="space-y-3 mb-8 text-left">
+          <ul className="space-y-3 mb-6 text-left">
             <li className="flex items-center gap-2">
               <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
                 <span className="text-primary text-xs font-bold">✓</span>
@@ -75,7 +75,7 @@ export default function Services() {
         </div>
       </div>
       
-      <div className="mt-12 text-center">
+      <div className="mt-10 text-center">
         <a href="mailto:pierrelefebvretraining@gmail.com" className="btn-primary mx-auto inline-flex">
           Réservez votre séance d'essai gratuite !
         </a>
