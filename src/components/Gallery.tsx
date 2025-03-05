@@ -26,6 +26,7 @@ const galleryImages = [
 
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   
   // Écouter l'événement d'ouverture de la galerie
   useEffect(() => {
@@ -57,13 +58,29 @@ export default function Gallery() {
   };
   
   const goToNextImage = () => {
-    setSelectedImage((prev) => (prev === null ? 0 : (prev + 1) % galleryImages.length));
+    if (isTransitioning) return;
+    
+    setIsTransitioning(true);
+    const nextIndex = selectedImage === null ? 0 : (selectedImage + 1) % galleryImages.length;
+    
+    // Utiliser une transition très rapide
+    setTimeout(() => {
+      setSelectedImage(nextIndex);
+      setIsTransitioning(false);
+    }, 50);
   };
   
   const goToPrevImage = () => {
-    setSelectedImage((prev) => 
-      prev === null ? 0 : (prev - 1 + galleryImages.length) % galleryImages.length
-    );
+    if (isTransitioning) return;
+    
+    setIsTransitioning(true);
+    const prevIndex = selectedImage === null ? 0 : (selectedImage - 1 + galleryImages.length) % galleryImages.length;
+    
+    // Utiliser une transition très rapide
+    setTimeout(() => {
+      setSelectedImage(prevIndex);
+      setIsTransitioning(false);
+    }, 50);
   };
   
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -136,14 +153,15 @@ export default function Gallery() {
           </button>
           
           <button
-            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 rounded-full p-2 text-white z-[60]"
+            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 rounded-full p-2 text-white z-[60] active:bg-white/40"
             onClick={goToPrevImage}
             aria-label="Image précédente"
+            disabled={isTransitioning}
           >
             <ChevronLeft className="h-6 w-6" />
           </button>
           
-          <div className="relative w-full max-w-5xl max-h-[90vh] flex items-center justify-center">
+          <div className={`relative w-full max-w-5xl max-h-[90vh] flex items-center justify-center transition-opacity duration-75 ${isTransitioning ? 'opacity-70' : 'opacity-100'}`}>
             <img
               src={galleryImages[selectedImage]}
               alt={`Photo de coaching ${selectedImage + 1}`}
@@ -152,9 +170,10 @@ export default function Gallery() {
           </div>
           
           <button
-            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 rounded-full p-2 text-white z-[60]"
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 rounded-full p-2 text-white z-[60] active:bg-white/40"
             onClick={goToNextImage}
             aria-label="Image suivante"
+            disabled={isTransitioning}
           >
             <ChevronRight className="h-6 w-6" />
           </button>
