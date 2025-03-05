@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -25,7 +24,7 @@ const galleryImages = [
 ];
 
 // Sélection d'une nouvelle image principale et de nouvelles vignettes
-const featuredImageIndex = 5; // Utilisation de l'image à l'index 5 (sixième image)
+const featuredImageIndex = 13; // Utilisation de l'image à l'index 13 (qui ne contient pas de visage)
 const thumbnailIndices = [9, 12, 16, 2, 14]; // Sélection de nouvelles images pour les vignettes
 
 export default function Gallery() {
