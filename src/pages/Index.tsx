@@ -11,6 +11,7 @@ import Gym from '@/components/Gym';
 import About from '@/components/About';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import Gallery from '@/components/Gallery';
 import { Dumbbell } from 'lucide-react';
 
 const Index = () => {
@@ -72,6 +73,7 @@ const Index = () => {
       <Testimonials />
       <Pricing />
       <Gym />
+      <Gallery />
       <About />
       <Contact />
       <Footer />

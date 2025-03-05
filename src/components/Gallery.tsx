@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 // Tableau avec tous les chemins des images uploadées
@@ -26,6 +26,23 @@ const galleryImages = [
 
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  
+  // Écouter l'événement d'ouverture de la galerie
+  useEffect(() => {
+    const handleOpenGallery = () => {
+      // Ouvrir la première image ou simplement montrer la galerie
+      setSelectedImage(0);
+      console.log("Gallery event received, opening viewer");
+    };
+    
+    // Ajouter l'écouteur d'événement
+    document.addEventListener('openGallery', handleOpenGallery);
+    
+    // Nettoyer l'écouteur d'événement
+    return () => {
+      document.removeEventListener('openGallery', handleOpenGallery);
+    };
+  }, []);
   
   const openViewer = (index: number) => {
     setSelectedImage(index);
@@ -62,7 +79,7 @@ export default function Gallery() {
   };
   
   return (
-    <section id="gallery" className="section-container" onKeyDown={handleKeyDown} tabIndex={-1}>
+    <section id="gallery" className="section-container py-20" onKeyDown={handleKeyDown} tabIndex={-1}>
       <h2 className="section-title">Galerie Photos</h2>
       
       <div className="max-w-[1400px] mx-auto">

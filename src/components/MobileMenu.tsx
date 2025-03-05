@@ -63,13 +63,17 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
   const handleMenuItemClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     
-    // First close the menu
+    // Store the href to navigate to
+    const targetHref = href;
+    
+    // First close the menu (with animation)
     onClose();
     
-    // Then navigate with a slight delay to ensure smooth transition
+    // Then navigate with a delay to ensure menu is closed and transition is smooth
     setTimeout(() => {
-      onNavigate(href);
-    }, 100);
+      console.log(`Navigating to ${targetHref} after menu close`);
+      onNavigate(targetHref);
+    }, 300); // Match this with the animation duration in the useEffect
   };
 
   // Don't render anything if not mounted
