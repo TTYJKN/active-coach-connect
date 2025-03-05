@@ -11,7 +11,7 @@ const testimonials = [
   },
   {
     name: "Julie",
-    image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=1471&auto=format&fit=crop",
+    image: "/lovable-uploads/930bbe7f-c93a-4135-ba37-38138553c76a.png",
     text: "Son coaching m'a permis d'améliorer mes performances en course à pied et de gagner en endurance. Les résultats sont impressionnants !",
     stars: 5
   }
