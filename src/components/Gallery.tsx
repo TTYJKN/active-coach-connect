@@ -24,6 +24,10 @@ const galleryImages = [
   "/lovable-uploads/d3e638de-895a-4504-99d8-3eb0120ae4eb.png"
 ];
 
+// Sélection d'une nouvelle image principale et de nouvelles vignettes
+const featuredImageIndex = 5; // Utilisation de l'image à l'index 5 (sixième image)
+const thumbnailIndices = [9, 12, 16, 2, 14]; // Sélection de nouvelles images pour les vignettes
+
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -101,9 +105,9 @@ export default function Gallery() {
       
       <div className="max-w-5xl mx-auto">
         {/* Featured image - single landscape orientation photo */}
-        <div className="relative w-full h-[300px] md:h-[400px] overflow-hidden rounded-lg shadow-lg mb-4 md:mb-6 hover:opacity-95 transition-opacity cursor-pointer group" onClick={() => openViewer(0)}>
+        <div className="relative w-full h-[300px] md:h-[400px] overflow-hidden rounded-lg shadow-lg mb-4 md:mb-6 hover:opacity-95 transition-opacity cursor-pointer group" onClick={() => openViewer(featuredImageIndex)}>
           <img 
-            src={galleryImages[0]} 
+            src={galleryImages[featuredImageIndex]} 
             alt="Photo principale de coaching" 
             className="w-full h-full object-cover"
           />
@@ -116,15 +120,15 @@ export default function Gallery() {
         
         {/* Thumbnails row */}
         <div className="grid grid-cols-5 gap-2 overflow-hidden">
-          {galleryImages.slice(1, 6).map((image, index) => (
+          {thumbnailIndices.map((imageIndex, index) => (
             <div 
               key={index}
               className="aspect-square overflow-hidden rounded-md cursor-pointer hover:opacity-90 transition-opacity"
-              onClick={() => openViewer(index + 1)}
+              onClick={() => openViewer(imageIndex)}
             >
               <img 
-                src={image} 
-                alt={`Photo de coaching ${index + 2}`} 
+                src={galleryImages[imageIndex]} 
+                alt={`Photo de coaching ${index + 1}`} 
                 className="w-full h-full object-cover"
               />
             </div>
