@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { cn } from "@/lib/utils";
 import { Menu } from 'lucide-react';
@@ -51,6 +52,13 @@ export default function Navbar() {
     }
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     scrollToSection(href);
@@ -66,8 +74,11 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 md:h-20">
           <div className="flex items-center">
             <a 
-              href="#hero" 
-              onClick={(e) => handleNavigation(e, "#hero")}
+              href="#" 
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToTop();
+              }}
               className="block"
             >
               <img 
@@ -78,7 +89,10 @@ export default function Navbar() {
             </a>
           </div>
           
-          <h1 className="text-xl md:text-2xl font-bold text-black">
+          <h1 
+            className="text-xl md:text-2xl font-bold text-black cursor-pointer" 
+            onClick={scrollToTop}
+          >
             Pierre Lefebvre
           </h1>
           
