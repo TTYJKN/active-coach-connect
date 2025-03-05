@@ -85,6 +85,15 @@ export default function Session() {
           </div>
         </div>
       </div>
+      
+      {/* Full-width training session image */}
+      <div className="mt-16 max-w-5xl mx-auto overflow-hidden rounded-xl shadow-lg reveal">
+        <img 
+          src="/lovable-uploads/c3215940-f52f-4df4-a65d-800677393f1e.png" 
+          alt="Séance d'entraînement avec coach" 
+          className="w-full h-auto object-cover"
+        />
+      </div>
     </section>
   );
 }
