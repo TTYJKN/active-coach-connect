@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import WhyChooseMe from '@/components/WhyChooseMe';
@@ -14,6 +14,8 @@ import Footer from '@/components/Footer';
 import { Dumbbell } from 'lucide-react';
 
 const Index = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
   // Animation for scroll reveal
   useEffect(() => {
     const revealElements = document.querySelectorAll('.reveal');
@@ -35,46 +37,44 @@ const Index = () => {
     
     // Hide loader after page is loaded
     const hideLoader = () => {
-      const loader = document.getElementById('loader');
-      if (loader) {
-        loader.style.opacity = '0';
-        loader.style.transition = 'opacity 0.5s ease';
-        setTimeout(() => {
-          loader.style.display = 'none';
-        }, 500);
-      }
+      setIsLoading(false);
     };
     
-    // Execute hide loader immediately and also on window load
-    hideLoader();
-    window.addEventListener('load', hideLoader);
+    // Execute hide loader with a small delay to ensure everything is ready
+    const timer = setTimeout(() => {
+      hideLoader();
+    }, 1000);
     
     return () => {
       window.removeEventListener('scroll', reveal);
-      window.removeEventListener('load', hideLoader);
+      clearTimeout(timer);
     };
   }, []);
 
   return (
     <div className="min-h-screen bg-white overflow-hidden">
       {/* Loading animation */}
-      <div id="loader" className="fixed inset-0 z-[100] flex items-center justify-center bg-white">
-        <div className="animate-pulse-soft">
-          <Dumbbell className="w-12 h-12 text-primary" />
+      {isLoading ? (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-white">
+          <div className="animate-pulse-soft">
+            <Dumbbell className="w-12 h-12 text-primary" />
+          </div>
         </div>
-      </div>
-      
-      <Navbar />
-      <Hero />
-      <WhyChooseMe />
-      <Services />
-      <Session />
-      <Testimonials />
-      <Pricing />
-      <Gym />
-      <About />
-      <Contact />
-      <Footer />
+      ) : (
+        <>
+          <Navbar />
+          <Hero />
+          <WhyChooseMe />
+          <Services />
+          <Session />
+          <Testimonials />
+          <Pricing />
+          <Gym />
+          <About />
+          <Contact />
+          <Footer />
+        </>
+      )}
     </div>
   );
 }
