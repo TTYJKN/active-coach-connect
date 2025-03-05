@@ -79,20 +79,35 @@ export default function Gallery() {
   };
   
   return (
-    <section id="gallery" className="section-container" onKeyDown={handleKeyDown} tabIndex={-1}>
+    <section id="gallery" className="section-container py-10 md:py-16" onKeyDown={handleKeyDown} tabIndex={-1}>
       <h2 className="section-title">Galerie Photos</h2>
       
-      <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 md:gap-3">
-          {galleryImages.slice(0, 10).map((image, index) => (
+      <div className="max-w-5xl mx-auto">
+        {/* Featured image - single landscape orientation photo */}
+        <div className="relative w-full h-[300px] md:h-[400px] overflow-hidden rounded-lg shadow-lg mb-4 md:mb-6 hover:opacity-95 transition-opacity cursor-pointer group" onClick={() => openViewer(0)}>
+          <img 
+            src={galleryImages[0]} 
+            alt="Photo principale de coaching" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+            <div className="text-white font-semibold text-lg bg-black/60 px-4 py-2 rounded-full">
+              Voir toutes les photos
+            </div>
+          </div>
+        </div>
+        
+        {/* Thumbnails row */}
+        <div className="grid grid-cols-5 gap-2 overflow-hidden">
+          {galleryImages.slice(1, 6).map((image, index) => (
             <div 
               key={index}
               className="aspect-square overflow-hidden rounded-md cursor-pointer hover:opacity-90 transition-opacity"
-              onClick={() => openViewer(index)}
+              onClick={() => openViewer(index + 1)}
             >
               <img 
                 src={image} 
-                alt={`Photo de coaching ${index + 1}`} 
+                alt={`Photo de coaching ${index + 2}`} 
                 className="w-full h-full object-cover"
               />
             </div>
@@ -102,7 +117,7 @@ export default function Gallery() {
         <div className="text-center mt-6">
           <button 
             onClick={() => openViewer(0)}
-            className="btn-primary mx-auto inline-flex"
+            className="btn-primary mx-auto inline-flex hover-scale"
           >
             Voir toutes les photos
           </button>
