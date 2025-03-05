@@ -20,7 +20,7 @@ const testimonials = [
 export default function Testimonials() {
   return (
     <section id="testimonials" className="section-container py-16 relative z-10 bg-white">
-      <h2 className="section-title">Témoignages & Transformations</h2>
+      <h2 className="section-title">Ils ont testé ma méthode</h2>
       
       <div className="max-w-5xl mx-auto">
         <div className="grid md:grid-cols-2 gap-8">
