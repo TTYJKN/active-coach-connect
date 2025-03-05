@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -97,7 +98,7 @@ export default function Gym() {
             </div>
             
             <div className="text-center mt-6">
-              <a href="mailto:pierrelefebvretraining@gmail.com" className="btn-primary btn-highlight mx-auto inline-flex">
+              <a href="mailto:pierrelefebvretraining@gmail.com" className="btn-primary subtle-hover mx-auto inline-flex">
                 Découvrez mon espace d'entraînement !
               </a>
             </div>

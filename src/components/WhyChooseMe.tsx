@@ -36,7 +36,7 @@ export default function WhyChooseMe() {
           <div className="mt-8 text-center">
             <a
               href="mailto:pierrelefebvretraining@gmail.com"
-              className="btn-primary btn-highlight py-2.5 px-4 md:px-6 rounded-md font-medium transition-all duration-300 shadow-sm hover:shadow flex items-center justify-center gap-2 mx-auto inline-flex"
+              className="btn-primary subtle-hover py-2.5 px-4 md:px-6 rounded-md font-medium transition-all duration-300 shadow-sm hover:shadow flex items-center justify-center gap-2 mx-auto inline-flex"
             >
               Contactez-moi dès aujourd'hui pour votre séance offerte !
             </a>

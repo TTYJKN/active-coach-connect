@@ -20,14 +20,14 @@ export default function Hero() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-80 animate-fade-up" style={{ animationDelay: '0.4s' }}>
             <a 
               href="mailto:pierrelefebvretraining@gmail.com" 
-              className="btn-primary btn-highlight"
+              className="btn-primary subtle-hover"
             >
               <Mail className="w-5 h-5" />
               <span>Contactez-moi par mail</span>
             </a>
             <a 
               href="sms:+33667839786" 
-              className="btn-secondary"
+              className="btn-secondary subtle-hover"
             >
               <MessageSquare className="w-5 h-5" />
               <span>Envoyez-moi un SMS</span>

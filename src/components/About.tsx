@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
@@ -62,7 +63,7 @@ export default function About() {
               )}
               
               <div className="text-center mt-6">
-                <a href="mailto:pierrelefebvretraining@gmail.com" className="btn-primary btn-highlight mx-auto inline-flex">
+                <a href="mailto:pierrelefebvretraining@gmail.com" className="btn-primary subtle-hover mx-auto inline-flex">
                   Envie d'en savoir plus ? Contactez-moi !
                 </a>
               </div>
