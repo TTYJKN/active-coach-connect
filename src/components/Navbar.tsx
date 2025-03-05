@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { cn } from "@/lib/utils";
-import { Menu } from 'lucide-react';
+import { Menu, Image } from 'lucide-react';
 import MobileMenu from './MobileMenu';
 
 interface NavLink {
@@ -13,6 +13,7 @@ const navLinks: NavLink[] = [
   { name: "Accueil", href: "#hero" },
   { name: "Services", href: "#services" },
   { name: "Tarifs", href: "#pricing" },
+  { name: "Galerie Photos", href: "#gallery" },
   { name: "Contact", href: "#contact" },
 ];
 
