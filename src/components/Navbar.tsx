@@ -72,7 +72,7 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <div className="flex items-center">
+          <div className="flex items-center space-x-4">
             <a 
               href="#" 
               onClick={(e) => {
@@ -87,14 +87,14 @@ export default function Navbar() {
                 className="h-12 md:h-14 w-auto" 
               />
             </a>
+            
+            <h1 
+              className="text-2xl md:text-3xl font-bold text-black cursor-pointer hidden md:block" 
+              onClick={scrollToTop}
+            >
+              Pierre Lefebvre
+            </h1>
           </div>
-          
-          <h1 
-            className="text-2xl md:text-3xl font-bold text-black cursor-pointer absolute left-1/2 transform -translate-x-1/2 hidden md:block" 
-            onClick={scrollToTop}
-          >
-            Pierre Lefebvre
-          </h1>
 
           {/* Mobile version of the title */}
           <h1 
