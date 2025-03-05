@@ -79,7 +79,36 @@ export default function Gallery() {
   };
   
   return (
-    <section id="gallery" className="sr-only" onKeyDown={handleKeyDown} tabIndex={-1}>
+    <section id="gallery" className="section-container" onKeyDown={handleKeyDown} tabIndex={-1}>
+      <h2 className="section-title">Galerie Photos</h2>
+      
+      <div className="max-w-6xl mx-auto">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 md:gap-3">
+          {galleryImages.slice(0, 10).map((image, index) => (
+            <div 
+              key={index}
+              className="aspect-square overflow-hidden rounded-md cursor-pointer hover:opacity-90 transition-opacity"
+              onClick={() => openViewer(index)}
+            >
+              <img 
+                src={image} 
+                alt={`Photo de coaching ${index + 1}`} 
+                className="w-full h-full object-cover"
+              />
+            </div>
+          ))}
+        </div>
+        
+        <div className="text-center mt-6">
+          <button 
+            onClick={() => openViewer(0)}
+            className="btn-primary mx-auto inline-flex"
+          >
+            Voir toutes les photos
+          </button>
+        </div>
+      </div>
+      
       {/* Photo viewer modal */}
       {selectedImage !== null && (
         <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center">
