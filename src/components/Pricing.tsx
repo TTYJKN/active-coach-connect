@@ -41,7 +41,9 @@ export default function Pricing() {
             </ul>
             
             <div className="mt-auto">
-              <a href="#contact" className="btn-primary w-full">la Réserver</a>
+              <a href="mailto:pierrelefebvretraining@gmail.com" className="btn-primary w-full">
+                Réserver
+              </a>
             </div>
           </div>
           
@@ -92,7 +94,7 @@ export default function Pricing() {
             </ul>
             
             <div className="mt-auto">
-              <a href="#contact" className="btn-primary w-full">
+              <a href="mailto:pierrelefebvretraining@gmail.com" className="btn-primary w-full">
                 Réserver
               </a>
             </div>
@@ -139,7 +141,7 @@ export default function Pricing() {
             </ul>
             
             <div className="mt-auto">
-              <a href="#contact" className="btn-primary w-full">
+              <a href="mailto:pierrelefebvretraining@gmail.com" className="btn-primary w-full">
                 Réserver
               </a>
             </div>
