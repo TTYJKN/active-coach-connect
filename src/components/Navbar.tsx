@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { cn } from "@/lib/utils";
 import { Menu } from 'lucide-react';
@@ -24,7 +23,6 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Watch for scrolling to change navbar appearance
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -36,7 +34,6 @@ export default function Navbar() {
     };
   }, []);
 
-  // Safe scrolling function with error handling
   const scrollToSection = (href: string) => {
     try {
       const element = document.querySelector(href);
@@ -45,12 +42,10 @@ export default function Navbar() {
         return;
       }
       
-      // Calculate position accounting for any fixed headers
-      const navbarHeight = 64; // Reduced for smaller spacing
+      const navbarHeight = 64;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - navbarHeight;
       
-      // Use a more reliable scrolling approach
       window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth'
@@ -60,7 +55,6 @@ export default function Navbar() {
     }
   };
 
-  // Handle navigation link clicks
   const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     scrollToSection(href);
@@ -88,12 +82,10 @@ export default function Navbar() {
             </a>
           </div>
           
-          {/* Pierre Lefebvre name - added between logo and menu */}
-          <h1 className="text-xl md:text-2xl font-bold text-primary">
+          <h1 className="text-xl md:text-2xl font-bold text-black">
             Pierre Lefebvre
           </h1>
           
-          {/* Mobile menu button */}
           <button 
             className="md:hidden focus:outline-none"
             onClick={() => setIsMenuOpen(true)}
@@ -102,7 +94,6 @@ export default function Navbar() {
             <Menu className="h-6 w-6" />
           </button>
           
-          {/* Desktop menu */}
           <nav className="hidden md:flex space-x-6">
             {navLinks.map((link) => (
               <a
@@ -118,7 +109,6 @@ export default function Navbar() {
         </div>
       </div>
       
-      {/* Mobile menu component */}
       <MobileMenu 
         isOpen={isMenuOpen} 
         onClose={() => setIsMenuOpen(false)} 
