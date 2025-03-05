@@ -26,7 +26,7 @@ export default function Hero() {
               <span>Contactez-moi par mail</span>
             </a>
             <a 
-              href="sms:+33600000000" 
+              href="sms:+33667839786" 
               className="btn-secondary"
             >
               <MessageSquare className="w-5 h-5" />

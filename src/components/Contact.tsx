@@ -14,14 +14,14 @@ export default function Contact() {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
             <a 
-              href="mailto:contact@pierrelefebvre.fr" 
+              href="mailto:pierrelefebvretraining@gmail.com" 
               className="btn-primary"
             >
               <Mail className="w-5 h-5" />
               <span>M'envoyer un mail</span>
             </a>
             <a 
-              href="sms:+33600000000" 
+              href="sms:+33667839786" 
               className="btn-secondary"
             >
               <MessageSquare className="w-5 h-5" />
