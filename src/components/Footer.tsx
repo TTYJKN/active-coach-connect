@@ -33,11 +33,9 @@ export default function Footer() {
           
           <div className="flex gap-4">
             <a 
-              href="https://www.instagram.com/pierre.lefebvre.training?igsh=ZzN3azY3OG8xODNh" 
+              href="#" 
               className="w-10 h-10 rounded-full bg-primary/10 hover:bg-primary/20 flex items-center justify-center transition-colors"
               aria-label="Instagram"
-              target="_blank"
-              rel="noopener noreferrer"
             >
               <Instagram className="w-5 h-5 text-primary" />
             </a>
