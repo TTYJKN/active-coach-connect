@@ -89,7 +89,7 @@ export default function Navbar() {
             </a>
             
             <h1 
-              className="text-2xl md:text-3xl font-bold text-black cursor-pointer hidden md:block" 
+              className="text-xl md:text-2xl font-bold text-black cursor-pointer hidden md:block" 
               onClick={scrollToTop}
             >
               Pierre Lefebvre
