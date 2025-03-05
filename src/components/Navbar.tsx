@@ -90,7 +90,15 @@ export default function Navbar() {
           </div>
           
           <h1 
-            className="text-xl md:text-2xl font-bold text-black cursor-pointer" 
+            className="text-2xl md:text-3xl font-bold text-black cursor-pointer absolute left-1/2 transform -translate-x-1/2 hidden md:block" 
+            onClick={scrollToTop}
+          >
+            Pierre Lefebvre
+          </h1>
+
+          {/* Mobile version of the title */}
+          <h1 
+            className="text-2xl font-bold text-black cursor-pointer md:hidden" 
             onClick={scrollToTop}
           >
             Pierre Lefebvre
@@ -104,13 +112,13 @@ export default function Navbar() {
             <Menu className="h-6 w-6" />
           </button>
           
-          <nav className="hidden md:flex space-x-6">
+          <nav className="hidden md:flex space-x-8">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleNavigation(e, link.href)}
-                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+                className="text-base font-bold text-foreground/80 hover:text-primary transition-colors"
               >
                 {link.name}
               </a>
