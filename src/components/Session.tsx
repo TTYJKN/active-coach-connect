@@ -4,19 +4,19 @@ import { Clock, Flame, ArrowRight, MessageCircle, Dumbbell } from 'lucide-react'
 
 export default function Session() {
   return (
-    <section id="session" className="section-container py-12 md:py-16 bg-secondary/30 reveal">
-      <h2 className="section-title mb-6">Comment se déroule une séance ?</h2>
+    <section id="session" className="section-container bg-secondary/30 reveal">
+      <h2 className="section-title">Comment se déroule une séance ?</h2>
       
       <div className="max-w-3xl mx-auto">
-        <div className="card-glass p-6 md:p-8">
-          <div className="flex justify-center mb-6">
+        <div className="card-glass p-8 md:p-10">
+          <div className="flex justify-center mb-8">
             <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full">
               <Clock className="h-5 w-5 text-primary" />
               <span className="font-medium">Durée : Toujours 1 heure</span>
             </div>
           </div>
           
-          <div className="space-y-6">
+          <div className="space-y-8">
             <div className="flex gap-4">
               <div className="flex-shrink-0">
                 <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
@@ -78,7 +78,7 @@ export default function Session() {
             </div>
           </div>
           
-          <div className="mt-6 text-center">
+          <div className="mt-10 text-center">
             <a href="mailto:pierrelefebvretraining@gmail.com" className="btn-primary mx-auto inline-flex">
               Je suis prêt à commencer ! Contactez-moi !
             </a>
