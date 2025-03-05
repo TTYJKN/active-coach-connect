@@ -6,7 +6,7 @@ export default function ScrollingBanner() {
     <div className="bg-primary/10 py-4 overflow-hidden w-full flex justify-center items-center">
       <div className="text-center animate-pulse-highlight">
         <span className="font-semibold text-lg md:text-xl">
-          Plus de 100 personnes aidées depuis 2019
+          Plus de <span className="text-black font-bold">100 personnes</span> aidées depuis 2019
         </span>
       </div>
     </div>
