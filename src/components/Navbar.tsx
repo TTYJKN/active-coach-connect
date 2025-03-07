@@ -119,7 +119,7 @@ export default function Navbar() {
               className="text-xl md:text-2xl font-bold text-black cursor-pointer hidden md:block" 
               onClick={scrollToTop}
             >
-              Pierre Lefebvre
+              PIERRE LEFEBVRE TRAINING
             </h1>
           </div>
 
@@ -128,7 +128,7 @@ export default function Navbar() {
             className="text-2xl font-bold text-black cursor-pointer md:hidden" 
             onClick={scrollToTop}
           >
-            Pierre Lefebvre
+            PIERRE LEFEBVRE TRAINING
           </h1>
           
           <button 
