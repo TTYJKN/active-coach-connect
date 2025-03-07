@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Activity, Dumbbell } from 'lucide-react';
 
@@ -16,7 +15,7 @@ export default function Services() {
           
           <h3 className="text-xl md:text-2xl font-semibold mb-4">Coaching Sportif</h3>
           <p className="text-foreground/70 mb-4">
-            Pour les personnes sédentaires ou souhaitant retrouver la forme
+            Pour les personnes sédentaires souhaitant retrouver la forme
           </p>
           
           <ul className="space-y-3 mb-8 text-left">
