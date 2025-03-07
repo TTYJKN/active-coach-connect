@@ -10,7 +10,7 @@ const testimonials = [
     stars: 5
   },
   {
-    name: "Julie",
+    name: "Émeline",
     image: "/lovable-uploads/930bbe7f-c93a-4135-ba37-38138553c76a.png",
     text: "Son coaching m'a permis d'améliorer mes performances en course à pied et de gagner en endurance. Les résultats sont impressionnants !",
     stars: 5
