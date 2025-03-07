@@ -15,7 +15,7 @@ export default function WhyChooseMe() {
   return (
     <section id="why-choose-me" className="py-16 w-full bg-secondary/50">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-10 font-heading">Pourquoi choisir Pierre Lefebvre ?</h2>
+        <h2 className="text-3xl font-bold text-center mb-10 font-heading">Pourquoi choisir mes services ?</h2>
         
         <div className="bg-white/60 backdrop-blur-sm border border-white/30 shadow-md rounded-xl p-6 md:p-8 max-w-4xl mx-auto">
           <p className="text-base md:text-lg text-center mb-8">
