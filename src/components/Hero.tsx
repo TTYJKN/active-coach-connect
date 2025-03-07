@@ -8,7 +8,7 @@ export default function Hero() {
       {/* Background image with overlay - with responsive positioning */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="/lovable-uploads/592d2aca-c44c-4352-bfbf-d209c5f2e0f7.png"
+          src="/lovable-uploads/75bf9201-0dd4-42d0-bfd7-6c0669ee43ae.png"
           alt="Coach sportif en action" 
           className="w-full h-full object-cover md:object-[center_20%]"
         />
