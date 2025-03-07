@@ -99,6 +99,7 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
+          {/* Desktop version: Logo + Title on the left */}
           <div className="flex items-center space-x-4">
             <a 
               href="#" 
@@ -123,13 +124,15 @@ export default function Navbar() {
             </h1>
           </div>
 
-          {/* Mobile version of the title */}
-          <h1 
-            className="text-2xl font-bold text-black cursor-pointer md:hidden" 
-            onClick={scrollToTop}
-          >
-            PIERRE LEFEBVRE TRAINING
-          </h1>
+          {/* Mobile version: centered flex with logo and title */}
+          <div className="flex items-center space-x-2 md:hidden">
+            <h1 
+              className="text-sm font-bold text-black cursor-pointer" 
+              onClick={scrollToTop}
+            >
+              PIERRE LEFEBVRE TRAINING
+            </h1>
+          </div>
           
           <button 
             className="md:hidden focus:outline-none"
