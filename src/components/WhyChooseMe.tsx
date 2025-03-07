@@ -4,7 +4,7 @@ import { Check } from 'lucide-react';
 
 const advantages = [
   "6 ans d'expérience en coaching",
-  "Ancien basketteur professionnel",
+  "Ancien basketteur de haut niveau",
   "Coaching adapté à tous les niveaux",
   "Salle privée de 200m² avec matériel haut de gamme",
   "Suivi personnalisé et progressif",
