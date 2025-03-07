@@ -9,7 +9,7 @@ const certifications = [
   { title: "Évaluation Neurotyping - Christian Thibaudeau", year: 2020 },
   { title: "Sport et Grossesse - Kinesport", year: 2021 },
   { title: "Réathlétisation du genou - Olivier Bolliet", year: 2022 },
-  { title: "Evaluation de la Mobilité - Training Thérapie", year: 2023 }
+  { title: "Évaluation de la Mobilité - Training Thérapie", year: 2023 }
 ];
 
 export default function About() {
