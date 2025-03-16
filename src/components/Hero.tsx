@@ -10,7 +10,7 @@ export default function Hero() {
         <img 
           src="/lovable-uploads/75bf9201-0dd4-42d0-bfd7-6c0669ee43ae.png"
           alt="Coach sportif en action" 
-          className="w-full h-full object-cover md:object-[center_-20%]"
+          className="w-full h-full object-cover md:object-[center_40%]"
         />
       </div>
       
