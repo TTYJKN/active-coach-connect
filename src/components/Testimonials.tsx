@@ -6,7 +6,7 @@ const testimonials = [
   {
     name: "Morgan",
     image: "/lovable-uploads/1dfa93d4-64eb-4537-8827-8011cf035547.png",
-    text: "Après un grave accident, les médecins m'ont conseillé de faire du renforcement musculaire. C'est là où j'ai contacté Pierre. Coach passionné et créatif, qui m'a permis de vite évoluer et de pouvoir pratiquer le triathlon aujourd'hui.",
+    text: "Pierre m'a réconcilié avec le sport grâce à son approche bienveillante et adaptée. Ses séances m'ont aidé à me sentir mieux, à gagner en autonomie et à surmonter douleurs et fatigue. Merci Coach !",
     stars: 5
   },
   {
