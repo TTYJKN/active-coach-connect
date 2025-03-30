@@ -6,7 +6,7 @@ const testimonials = [
   {
     name: "Morgan",
     image: "/lovable-uploads/1dfa93d4-64eb-4537-8827-8011cf035547.png",
-    text: "Pierre m'a aidé à me remettre en forme après une blessure. Aujourd'hui, je n'ai plus de douleurs et je me sens énergique !",
+    text: "Pierre m'a réconcilié avec le sport grâce à son approche bienveillante et adaptée. Ses séances m'ont aidé à me sentir mieux, à gagner en autonomie et à surmonter douleurs et fatigue. Merci Coach !",
     stars: 5
   },
   {
