@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { Clock, Flame, ArrowRight, MessageCircle, Dumbbell } from 'lucide-react';
+import { Clock, Flame, ArrowRight, MessageCircle, Dumbbell, Heart } from 'lucide-react';
 
 export default function Session() {
   return (
@@ -42,6 +43,21 @@ export default function Session() {
                 <p className="text-foreground/80">
                   Des exercices spécifiquement choisis selon vos objectifs et adaptés à votre niveau,
                   avec une attention particulière à la technique.
+                </p>
+              </div>
+            </div>
+            
+            <div className="flex gap-4">
+              <div className="flex-shrink-0">
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                  <Heart className="h-5 w-5 text-primary" />
+                </div>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold mb-2">Partie cardio</h3>
+                <p className="text-foreground/80">
+                  Qui consiste à effectuer un petit challenge de façon ludique afin d'entretenir ou améliorer 
+                  son système cardio-vasculaire.
                 </p>
               </div>
             </div>
