@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { MapPin, Mail, Phone, Instagram, Facebook } from 'lucide-react';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 export default function Footer() {
   return (
@@ -51,8 +52,44 @@ export default function Footer() {
           </div>
         </div>
         
-        <div className="border-t border-primary/10 mt-8 pt-8 text-center">
-          <p className="text-sm text-foreground/60">
+        <div className="mt-8 pt-8 border-t border-primary/10">
+          <div className="max-w-3xl mx-auto">
+            <Accordion type="single" collapsible className="w-full">
+              <AccordionItem value="legal">
+                <AccordionTrigger className="text-sm text-foreground/70 hover:text-foreground/90 hover:no-underline">
+                  Mentions légales
+                </AccordionTrigger>
+                <AccordionContent className="text-sm text-left">
+                  <div className="space-y-4 py-2">
+                    <h4 className="font-semibold">MENTIONS LÉGALES</h4>
+                    
+                    <div>
+                      <h5 className="font-medium">Éditeur du site</h5>
+                      <p>Nom : Lefebvre Pierre</p>
+                      <p>Statut : Auto-entrepreneur</p>
+                      <p>Adresse : APPT C13, 21 RUE VAUCANSON, 59800 LILLE</p>
+                      <p>Email : pierrelefebvretraining@gmail.com</p>
+                      <p>N° SIRET : 84770059800018</p>
+                      <p>Responsable de la publication : Lefebvre Pierre</p>
+                    </div>
+                    
+                    <div>
+                      <h5 className="font-medium">Hébergement</h5>
+                      <p>Nom de l'hébergeur : Hostinger</p>
+                      <p>Adresse de l'hébergeur : UAB Švitrigailos str. 34, Vilnius 03230 Lithuania</p>
+                    </div>
+                    
+                    <div>
+                      <h5 className="font-medium">Propriété intellectuelle</h5>
+                      <p>Tous les contenus présents sur cette landing page (textes, images, vidéos, logos, etc.) sont protégés par les droits de propriété intellectuelle. Toute reproduction, diffusion ou utilisation sans autorisation est interdite.</p>
+                    </div>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
+          
+          <p className="text-sm text-foreground/60 text-center mt-4">
             © {new Date().getFullYear()} Pierre Lefebvre. Tous droits réservés.
           </p>
         </div>
