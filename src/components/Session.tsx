@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Clock, Flame, ArrowRight, MessageCircle, Dumbbell } from 'lucide-react';
 
@@ -54,7 +53,7 @@ export default function Session() {
                 </div>
               </div>
               <div>
-                <h3 className="text-lg font-semibold mb-2">Étirements et conseils</h3>
+                <h3 className="text-lg font-semibold mb-2">Retour au calme</h3>
                 <p className="text-foreground/80">
                   Un retour au calme avec des étirements adaptés et des conseils personnalisés
                   pour optimiser votre récupération.
@@ -88,4 +87,3 @@ export default function Session() {
     </section>
   );
 }
-
