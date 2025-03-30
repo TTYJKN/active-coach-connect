@@ -39,7 +39,7 @@ export default function Session() {
                 </div>
               </div>
               <div>
-                <h3 className="text-lg font-semibold mb-2">Exercices ciblés</h3>
+                <h3 className="text-lg font-semibold mb-2">Renforcement musculaire</h3>
                 <p className="text-foreground/80">
                   Des exercices spécifiquement choisis selon vos objectifs et adaptés à votre niveau,
                   avec une attention particulière à la technique.
@@ -88,3 +88,4 @@ export default function Session() {
     </section>
   );
 }
+
