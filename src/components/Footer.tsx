@@ -86,6 +86,49 @@ export default function Footer() {
                   </div>
                 </AccordionContent>
               </AccordionItem>
+              
+              <AccordionItem value="cgu">
+                <AccordionTrigger className="text-sm text-foreground/70 hover:text-foreground/90 hover:no-underline">
+                  Conditions Générales d'Utilisation (CGU)
+                </AccordionTrigger>
+                <AccordionContent className="text-sm text-left">
+                  <div className="space-y-4 py-2">
+                    <h4 className="font-semibold">CONDITIONS GÉNÉRALES D'UTILISATION (CGU)</h4>
+                    
+                    <div>
+                      <h5 className="font-medium">1. Objet</h5>
+                      <p>Les présentes CGU ont pour objet de définir les conditions d'accès et d'utilisation de la landing page Pierre Lefebvre Training.</p>
+                    </div>
+                    
+                    <div>
+                      <h5 className="font-medium">2. Accès au site</h5>
+                      <p>L'accès au site est libre. L'utilisateur reconnaît disposer des compétences et moyens nécessaires pour accéder et utiliser le site.</p>
+                    </div>
+                    
+                    <div>
+                      <h5 className="font-medium">3. Responsabilité</h5>
+                      <p>L'éditeur du site ne peut être tenu responsable des erreurs ou omissions présentes sur la page, ni de l'utilisation qui pourrait en être faite.</p>
+                    </div>
+                    
+                    <div>
+                      <h5 className="font-medium">4. Données personnelles</h5>
+                      <p>Lorsque vous remplissez un formulaire sur cette landing page, vos données (nom, prénom, email…) peuvent être collectées pour vous recontacter.</p>
+                      <p>Ces données sont strictement confidentielles, ne seront jamais revendues et sont utilisées uniquement dans le cadre de [objectif : prise de contact, offre de services, etc.].</p>
+                      <p>Conformément au RGPD, vous pouvez exercer votre droit d'accès, de rectification ou de suppression en nous contactant à l'adresse suivante : pierrelefebvretraining@gmail.com</p>
+                    </div>
+                    
+                    <div>
+                      <h5 className="font-medium">5. Cookies</h5>
+                      <p>Cette landing page peut utiliser des cookies à des fins de mesure d'audience ou d'amélioration de l'expérience utilisateur. Vous pouvez à tout moment modifier vos préférences via les paramètres de votre navigateur.</p>
+                    </div>
+                    
+                    <div>
+                      <h5 className="font-medium">6. Modification des CGU</h5>
+                      <p>L'éditeur se réserve le droit de modifier à tout moment les présentes CGU. L'utilisateur est invité à les consulter régulièrement.</p>
+                    </div>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
             </Accordion>
           </div>
           
