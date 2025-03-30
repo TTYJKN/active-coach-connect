@@ -12,7 +12,7 @@ const testimonials = [
   {
     name: "Émeline",
     image: "/lovable-uploads/930bbe7f-c93a-4135-ba37-38138553c76a.png",
-    text: "Son coaching m'a permis d'améliorer mes performances en course à pied et de gagner en endurance. Les résultats sont impressionnants !",
+    text: "Après un grave accident, les médecins m'ont conseillé de faire du renforcement musculaire. C'est là où j'ai contacté Pierre. Coach passionné et créatif, qui m'a permis de vite évoluer et de pouvoir pratiquer le triathlon aujourd'hui.",
     stars: 5
   }
 ];
